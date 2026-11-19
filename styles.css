@@ -1,0 +1,559 @@
+/* Hallmark · shape: Bento Grid · genre: atmospheric · theme: Kiln (deal 3/3, seed homepage-escape-hub-horror-6e6a·a1016604·2026-11-11·r0) · job: book · draw: 2633be
+ * hero: Stage · nav: edge-aligned · footer: mast · imagery: photographs, the brand's own video frames 4, mono warm · signature: the house's world, its own picture behind the whole page, and a finder whose answer walks the page into the house that fits · kiln: ember
+ * axes: dark/high-contrast-serif/warm · posture: full-palette · contrast: pass · fold: pass · brand: Escape Hub 13 (spec 2026-11-11) · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, an Arabic display face on a scale tuned for Latin; raised the display steps and opened the leading for Amiri */
+/* Hallmark · hero-review: in-thread · fix · 4 findings · 4 resolved · finish-review: in-thread · fix · 3 findings · 3 resolved · gap: none */
+/* Hallmark · waive 28b · the trailer's screen gets the picked house's still as its poster from teaser.js the moment it opens, and holds no film before the tap · the venue's film lies over the owner's picture, which stands as its poster and stays when it cannot play */
+/* Hallmark · waive 37 · two of the three houses set their own name, and nothing else, in a face of their own (Kufam for the tomb, Rakkas for the morgue) · the owner asked on 2026-11-14 for every house to have its own theme, and only the letters of those two names are fetched */
+/* Hallmark · waive 44c · the hero's picture is the scene filling the screen behind the whole page, so it meets every edge and stands behind the words rather than beside them · the owner asked on 2026-11-16 for the interactive picture to take the whole page */
+/* tokens.css and base.css are linked before this file in index.html, so the three load side by side. */
+
+/* Arabic sets taller than Latin: open the leading the base rules assume. */
+body { line-height: 1.7; }
+h1, h2 { line-height: 1.15; }
+h3 { line-height: 1.3; }
+
+.skip { position: absolute; inset-inline-start: var(--space-md); top: calc(-1 * var(--space-3xl)); z-index: var(--z-toast); padding: var(--space-xs) var(--space-md); background: var(--color-ink); color: var(--color-paper); }
+.skip:focus-visible { top: var(--space-md); }
+
+/* Controls */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: 50px; padding: 0 var(--space-lg); border: 0; border-radius: var(--radius-pill); font: 500 var(--text-md)/1 var(--font-body); white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.btn--primary:hover { background: color-mix(in oklab, var(--color-accent) 86%, var(--color-ink)); }
+.btn--ghost { background: transparent; color: var(--color-ink); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); }
+.btn--ghost:hover { background: var(--color-paper-2); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; transform: none; }
+.btn--sm { min-height: 44px; padding: 0 var(--space-md); }
+/* A control that sits on a photograph or a video: a solid step of paper under it, so it reads over any frame. */
+.btn--over { background: var(--color-paper-2); color: var(--color-ink); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); }
+.btn--over:hover { background: var(--color-paper-3); }
+
+/* Nav: edge-aligned, the wordmark and one action */
+.nav { position: sticky; top: 0; z-index: var(--z-sticky-nav); background: var(--color-paper); }
+.nav__in { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); min-height: var(--nav-height); }
+.nav__end { display: flex; align-items: center; gap: var(--space-sm); }
+/* The house's soundtrack switch (sound.js): shown only in a world with a track. Waves when on, a cross when off. */
+.sound { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 44px; padding: 0 var(--space-sm); border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--color-ink-2); font: 400 var(--text-sm)/1 var(--font-body); cursor: pointer; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.sound:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.sound:active { transform: translateY(1px); }
+.sound[aria-pressed="true"] { color: var(--color-accent); }
+.sound__icon { inline-size: 22px; block-size: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sound__body { fill: currentColor; stroke: none; }
+.sound__waves { opacity: 0; transition: opacity var(--dur-short) var(--ease-out); }
+.sound[aria-pressed="true"] .sound__waves { opacity: 1; animation: sound-breathe 2.4s var(--ease-in-out) infinite; }
+.sound[aria-pressed="true"] .sound__off { opacity: 0; }
+@keyframes sound-breathe { 50% { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .sound[aria-pressed="true"] .sound__waves { animation: none; } }
+/* On a narrow phone the switch says only "the sound", and the icon tells on from off; the full words stay for readers. */
+.sound__short { display: none; }
+@media (max-width: 30rem) {
+  .sound__short { display: inline; }
+  .sound__label { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+.wordmark { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-xl); line-height: 1; text-decoration: none; white-space: nowrap; }
+
+/* Photographs: the venue's frames arrive tinted red, blue and violet, so every one is set in one warm monochrome,
+   and in the tint of the picked house's world once there is one, which they take on slowly. Every tint is the same
+   list of filters (tokens.css), so one can glide into the next. */
+[data-slot] > img { filter: var(--world-photo, grayscale(1) sepia(0.55) hue-rotate(0deg) saturate(1) contrast(1.12) brightness(0.9)); transition: filter var(--dur-world) var(--ease-in-out); }
+.photo { margin: 0; border-radius: min(2vw, var(--radius-card)); }
+.photo > img { border-radius: inherit; outline: var(--rule-hair) solid color-mix(in oklab, var(--color-ink) 8%, transparent); outline-offset: -1px; }
+
+/* Hero: the words on the first screen, over the scene (below), which fills the screen behind the whole page. On wide
+   screens the words stand to one side, on phones at the foot of the screen. */
+.hero { position: relative; display: grid; min-height: calc(100dvh - var(--nav-height)); padding-block: var(--space-xl); }
+.hero__in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: var(--space-2xl); }
+/* Reem Kufi runs wider than the face before it: in the wide hero's five columns the line broke in three, "ده بيت" alone.
+   A little smaller there keeps it to two lines; a phone's full width needs nothing. */
+@media (min-width: 60.01rem) { .hero__text h1 { font-size: calc(var(--text-display) * 0.84); } }
+.hero__text { position: relative; z-index: 3; display: grid; justify-items: start; gap: var(--space-lg); }
+.hero__text .lead { color: var(--color-ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-block-start: var(--space-md); }
+/* The stage: a layer the size of the first screen. It catches a finger holding the torch, and it shades the side the
+   words stand on, so they read over any picture. */
+.hero__frames { position: absolute; inset: 0; }
+.hero__frames::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to left, color-mix(in oklab, var(--color-paper) 92%, transparent), color-mix(in oklab, var(--color-paper) 66%, transparent) 34%, transparent 62%); }
+[dir="ltr"] .hero__frames::after { background: linear-gradient(to right, color-mix(in oklab, var(--color-paper) 92%, transparent), color-mix(in oklab, var(--color-paper) 66%, transparent) 34%, transparent 62%); }
+
+/* The scene: the picture of the house on show, filling the screen and held still behind the whole page. The page opens
+   on the venue's own picture. A house with a picture of its own (a set with data-for) shows it
+   instead, in its own colours, since that house's world takes its colours from it. booking.js passes from one set to
+   the next slowly. */
+.scene { position: fixed; z-index: -1; inset: 0 0 auto; height: 100vh; height: 100lvh; overflow: clip; pointer-events: none; }
+/* The pictures keep their slots' z-index among themselves, so the veil always lies over them. */
+.scene__pictures { position: absolute; inset: 0; isolation: isolate; transition: opacity var(--dur-long) var(--ease-out); }
+.scene__set { position: absolute; inset: 0; opacity: 0; transition: opacity var(--dur-world) var(--ease-in-out); }
+.scene__set.is-on { opacity: 1; }
+/* Each picture is a layer of its own, so a later one always lies over an earlier one whatever is moving in them. */
+.scene__set > .photo { position: absolute; inset: 0; border-radius: 0; isolation: isolate; }
+/* Each picture keeps its own colours, since its house's world is measured from it. The tomb's frame arrives tinted,
+   so it takes the tomb's torchlight instead. */
+.scene .photo > img { border-radius: 0; outline: none; filter: none; object-position: var(--subject, 50% 50%); }
+.scene__set[data-for="tomb"] .photo > img { filter: var(--world-photo, grayscale(1) sepia(0.75) hue-rotate(0deg) saturate(1) contrast(1.12) brightness(0.9)); }
+/* The tomb's picture is a tall one, a face in a hood. On a screen wider than it is tall, filling the width would cut
+   the face in half, so it stands at the far side the full height of the screen, showing the face from brow to chin
+   (19% to 88% of the picture), and fades into the dark at its sides. */
+@media (min-aspect-ratio: 1/1) {
+  .scene__set[data-for="tomb"] > .photo { inset-inline: auto 4vw; width: calc(100lvh * 0.84); mask-image: linear-gradient(to right, transparent, var(--color-ink) 12%, var(--color-ink) 78%, transparent); }
+  .scene__set[data-for="tomb"] .photo > img { object-position: 50% 62%; }
+}
+/* The brand's own look: the venue at night (the owner's picture). Once the map has landed, or at once without it, the
+   camera moves in on the building slowly, like a film's opening shot: it starts wide and a little to the side, drifts
+   to the door, and rests close. Over the sign a glow hums now and then, as a lit sign does. With reduced motion the
+   picture simply rests. */
+.scene__set:not([data-for]) { --push-at: 56% 42%; }
+/* The glow moves with the picture, so it stays on the sign as the camera comes in. */
+.photo--venue > img, .photo--venue::after { transform-origin: var(--push-at); }
+.hero__frames:not(.is-arriving) .photo--venue > img { animation: venue-push 18s var(--ease-in-out) 0.6s both; }
+@keyframes venue-push {
+  from { transform: scale(1.02) translate(2.5%, 1.5%); }
+  to { transform: scale(1.16) translate(0%, 0%); }
+}
+.photo--venue::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(ellipse 16% 9% at var(--sign-at), color-mix(in oklab, var(--venue-glow) 55%, transparent), transparent 70%); mix-blend-mode: screen; opacity: 0.5; }
+.hero__frames:not(.is-arriving) .photo--venue::after { animation: venue-push 18s var(--ease-in-out) 0.6s both, sign-hum 7s var(--ease-in-out) 2s infinite; }
+/* The sign breathes slowly rather than flickering. */
+@keyframes sign-hum { from, to { opacity: 0.4; } 50% { opacity: 0.65; } }
+@media (prefers-reduced-motion: reduce) { .photo--venue > img, .photo--venue::after { animation: none; } }
+/* The owner's film over the picture (venue.js). It shows once it is playing; while it rolls the veil thins so it is
+   seen on every screen, and the sign's glow waits, since the sign is moving. When it ends on the front of the
+   building the camera keeps drifting in a little, and the glow comes back on the sign, which then stands where it
+   stands in the picture. */
+.photo--venue > video { position: absolute; inset: 0; z-index: 2; inline-size: 100%; block-size: 100%; object-fit: cover; object-position: var(--subject, 50% 50%); transform-origin: var(--push-at); opacity: 0; transition: opacity var(--dur-long) var(--ease-out); }
+.photo--venue.is-film > video { opacity: 1; }
+.hero__frames:not(.is-arriving) .photo--venue.is-film::after { opacity: 0; animation: none; }
+.hero__frames:not(.is-arriving) .photo--venue.is-film-done > video { animation: venue-settle 14s var(--ease-in-out) both; }
+.hero__frames:not(.is-arriving) .photo--venue.is-film-done::after { animation: venue-settle 14s var(--ease-in-out) both, sign-hum 7s var(--ease-in-out) 1s infinite; }
+@keyframes venue-settle { from { transform: none; } to { transform: scale(1.07); } }
+/* Where the sign stands in the film's last frame, and the dark coming back slowly once the film is over. */
+.photo--venue.is-film-done { --sign-at: 60% 21%; }
+.torch .hero__frames:has(.is-film-done) .scene__veil { transition: opacity var(--dur-world) var(--ease-in-out), --veil var(--dur-world) var(--ease-in-out); }
+:root:not([data-world]) .hero__frames:not(.is-past):not(.is-lit):has(.is-film:not(.is-film-done)) .scene__veil { opacity: 0.4; }
+@media (prefers-reduced-motion: reduce) { .photo--venue > video { display: none; } }
+/* The tomb's walls: columns of faint red hieroglyphs over the whole page while the tomb is on show (tokens.css). */
+.scene__glyphs { position: absolute; inset: 0; opacity: 0; background: color-mix(in oklab, var(--tomb-glyph) 22%, transparent); mask-image: var(--tomb-glyphs); mask-size: var(--tomb-glyphs-size); mask-repeat: repeat; mask-position: 50% 0; transition: opacity var(--dur-world) var(--ease-in-out); }
+:root[data-world="tomb"] .scene__glyphs { opacity: 1; }
+
+/* The torch. The scene waits under a veil of the page's own dark. Once torch.js runs, a hole of light follows the
+   visitor's mouse or held finger anywhere on the page. Past the first screen the hole only thins the veil
+   (--torch-floor), so the words over it stay readable. Without the torch the scene rests half veiled. */
+@property --torch-r { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --torch-x { syntax: "<length-percentage>"; inherits: true; initial-value: 50%; }
+@property --torch-y { syntax: "<length-percentage>"; inherits: true; initial-value: 40%; }
+@property --torch-floor { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+.scene__veil { position: absolute; inset: 0; background: color-mix(in oklab, var(--color-paper) 62%, transparent); transition: opacity var(--dur-long) var(--ease-out); }
+.torch-toggle { display: none; }
+.torch .hero__frames { touch-action: pan-y pinch-zoom; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; transition: --torch-r var(--dur-long) var(--ease-out), --torch-floor var(--dur-long) var(--ease-out); }
+.torch .hero__frames.is-held { --torch-r: var(--torch-size); }
+/* 75% keeps small grey text at 4.7:1 over the brightest part of the morgue's picture (measured 2026-11-16). */
+.torch .hero__frames.is-past { --torch-floor: 75%; }
+/* The veil is thinner over the venue on the first screen before any house is picked, so the building shows. */
+@property --veil { syntax: "<percentage>"; inherits: true; initial-value: 88%; }
+.torch .scene__veil { --veil: var(--veil-world); background: radial-gradient(circle at var(--torch-x) var(--torch-y), color-mix(in oklab, var(--color-paper) var(--torch-floor), transparent) calc(var(--torch-r) * 0.5), color-mix(in oklab, var(--color-paper) var(--veil), transparent) var(--torch-r)); transition: opacity var(--dur-long) var(--ease-out), --veil var(--dur-world) var(--ease-in-out); }
+.torch:not([data-world]) .hero__frames:not(.is-past) .scene__veil { --veil: var(--veil-venue); }
+/* A touch screen has no mouse to keep a light on, so there the picture shows through a thinner veil by itself (the
+   words keep their own shade at the foot of the screen), a light drifts over it on its own like a torch searching the
+   room, and a held finger takes the light, a wider one, held just above the fingertip. */
+@media (hover: none) {
+  .torch:not([data-world]) .hero__frames:not(.is-past) .scene__veil { --veil: var(--veil-venue-touch); }
+  .torch[data-world] .hero__frames:not(.is-past) .scene__veil { --veil: var(--veil-world-touch); }
+  .torch .hero__frames.is-held { --torch-r: var(--torch-size-touch); }
+  .torch .hero__frames:not(.is-arriving):not(.is-held):not(.is-past):not(.is-lit) { --torch-r: var(--torch-size-touch); animation: torch-search 14s var(--ease-in-out) 0.4s infinite alternate both; }
+  /* Once the phone's lean moves the light (torch.js), the drift stops and the light goes where the phone points. */
+  .torch .hero__frames.is-tilting:not(.is-arriving):not(.is-held):not(.is-past):not(.is-lit) { animation: none; }
+}
+@keyframes torch-search {
+  from { --torch-x: 70%; --torch-y: 30%; }
+  30% { --torch-x: 34%; --torch-y: 22%; }
+  60% { --torch-x: 58%; --torch-y: 48%; }
+  to { --torch-x: 26%; --torch-y: 40%; }
+}
+/* Picking a house on a touch screen lifts the veil for a moment, so its picture is seen whole before the dark closes in. */
+.torch .hero__frames.is-revealing .scene__veil { animation: veil-reveal calc(var(--dur-world) * 1.8) var(--ease-in-out) both; }
+@keyframes veil-reveal { from { opacity: 1; } 30%, 55% { opacity: 0.4; } to { opacity: 1; } }
+/* Each newly picked house switches the stage between two copies of the lift and of the sweep (torch.js), which starts
+   them afresh without making the page work out its layout early. */
+@media (prefers-reduced-motion: no-preference) {
+  .torch .hero__frames.is-revealing.is-swept .scene__veil { animation-name: veil-reveal-again; }
+}
+@keyframes veil-reveal-again { from { opacity: 1; } 30%, 55% { opacity: 0.4; } to { opacity: 1; } }
+/* The one line that says what the dark is for, on touch screens only, gone once a finger has held the light. */
+.torch-hint { display: none; }
+@media (hover: none) {
+  .torch .torch-toggle { box-shadow: inset 0 0 0 var(--rule-hair) color-mix(in oklab, var(--world, var(--color-ink)) 60%, transparent); }
+  /* It stands over the ground in front of the building, clear of the sign at the top of the picture. */
+  .torch .torch-hint { display: block; position: absolute; z-index: 3; inset-block-start: 44svh; inset-inline-end: var(--gutter); margin: 0; padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-pill); background: color-mix(in oklab, var(--color-paper) 72%, transparent); color: var(--color-ink-2); font-size: var(--text-sm); transition: opacity var(--dur-long) var(--ease-out); }
+  .torch .is-arriving .torch-hint, .torch .is-held-once .torch-hint, .torch .is-lit .torch-hint { opacity: 0; pointer-events: none; }
+}
+/* The lights on: the veil lifts while the first screen is in view, and comes back over the rest of the page. */
+.torch .hero__frames.is-lit:not(.is-past) .scene__veil { opacity: 0; }
+/* One sweep of light when the page opens shows what the dark is for, and another passes over each newly picked house.
+   The first touch ends it, and it waits for the arrival to land. */
+.torch .hero__frames:not(.is-touched):not(.is-arriving) { animation: torch-sweep 1.8s var(--ease-in-out) 0.5s both; }
+@media (prefers-reduced-motion: no-preference) {
+  .torch .hero__frames.is-swept:not(.is-touched):not(.is-arriving) { animation-name: torch-sweep-again; }
+}
+@keyframes torch-sweep {
+  from { --torch-r: 0px; --torch-x: 78%; --torch-y: 38%; }
+  20% { --torch-r: var(--torch-size); --torch-x: 78%; --torch-y: 38%; }
+  80% { --torch-r: var(--torch-size); --torch-x: 22%; --torch-y: 46%; }
+  to { --torch-r: 0px; --torch-x: 22%; --torch-y: 46%; }
+}
+@keyframes torch-sweep-again {
+  from { --torch-r: 0px; --torch-x: 78%; --torch-y: 38%; }
+  20% { --torch-r: var(--torch-size); --torch-x: 78%; --torch-y: 38%; }
+  80% { --torch-r: var(--torch-size); --torch-x: 22%; --torch-y: 46%; }
+  to { --torch-r: 0px; --torch-x: 22%; --torch-y: 46%; }
+}
+.torch .torch-toggle { display: inline-flex; position: absolute; z-index: 3; inset-block-end: var(--space-xl); inset-inline-end: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); }
+.torch .is-arriving .torch-toggle { display: none; }
+@media (prefers-reduced-motion: reduce) { .torch .hero__frames { animation: none; } }
+
+/* The arrival. Before the frames show, the page comes down on the venue from above: arrival.js flies through one map
+   picture for each zoom level, the next one growing inside the last. On wide screens the map shows in a round pool,
+   like the torch's light, and on phones it fills the poster. */
+.arrival { --focus-y: 50%; position: absolute; z-index: 2; inset-block: 0; inset-inline: 42% 0; container-type: size; opacity: 0; pointer-events: none; transition: opacity var(--dur-long) var(--ease-out); }
+.arrival.is-flying { opacity: 1; }
+.arrival.is-leaving { opacity: 0; transition-duration: calc(var(--dur-long) * 1.6); }
+.arrival__sky { position: absolute; inset: 0; overflow: clip; mask-image: radial-gradient(closest-side, var(--color-ink) 58%, transparent); }
+/* Every picture has the venue at --focus-y of its height, and that is the point it scales and turns about. Each is
+   cut larger than the frame and fades at its own edge, so the one growing inside the last shows no seam. */
+.arrival__sky img { --edge-x: 6%; --edge-y: 6%; position: absolute; top: var(--focus-y); left: 50%; inline-size: max(114cqw, 114cqh); max-width: none; translate: -50% calc(var(--focus-y) * -1); transform-origin: 50% var(--focus-y); will-change: scale, rotate; mask-image: linear-gradient(to right, transparent, var(--color-ink) var(--edge-x), var(--color-ink) calc(100% - var(--edge-x)), transparent), linear-gradient(to bottom, transparent, var(--color-ink) var(--edge-y), var(--color-ink) calc(100% - var(--edge-y)), transparent); mask-composite: intersect; }
+/* The name of what is below, under the venue's point. As the camera lands a ring closes on the venue and pulses once. */
+.arrival__place { position: absolute; top: var(--focus-y); inset-inline: 0; margin-block-start: var(--space-xl); font-weight: 500; text-align: center; text-shadow: 0 0 var(--space-sm) var(--color-paper), 0 0 var(--space-2xs) var(--color-paper); }
+.arrival__place::before, .arrival__place::after { content: ""; position: absolute; top: calc(-1 * var(--space-xl)); left: 50%; inline-size: var(--space-2xl); aspect-ratio: 1; border: 2px solid var(--color-ink); border-radius: 50%; opacity: 0; transform: translate(-50%, -50%); }
+.arrival__place::before { transform: translate(-50%, -50%) scale(1.8); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+.arrival.is-landed .arrival__place::before { opacity: 1; transform: translate(-50%, -50%); }
+.arrival.is-landed .arrival__place::after { animation: arrival-pulse 900ms var(--ease-out) var(--dur-short) both; }
+@keyframes arrival-pulse {
+  from { opacity: 0.8; transform: translate(-50%, -50%); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(2.4); }
+}
+.arrival__credit { position: absolute; inset-block-end: var(--space-2xl); inset-inline-end: var(--space-xl); font-size: var(--text-xs); color: var(--color-muted); }
+.arrival__credit a { color: inherit; pointer-events: auto; }
+/* The way past the arrival, at the foot of the map, whose pool is centred 29% in from the far side of the screen. */
+.arrival__skip { position: absolute; z-index: 3; inset-block-end: var(--space-xl); left: 29%; translate: -50% 0; }
+[dir="ltr"] .arrival__skip { left: 71%; }
+/* The scene stays out of sight until the map has gone. */
+.hero__frames.is-arriving .scene__pictures { opacity: 0; }
+
+@media (max-width: 60rem) {
+  .hero { min-height: calc(100svh - var(--nav-height)); padding-block: 0; }
+  .hero__in { grid-template-columns: minmax(0, 1fr); align-items: end; }
+  /* On a phone the scene shows one frame, or the picked house's own picture at its subject, and the words stand at the
+     foot of the screen in the shade. */
+  .scene .photo > img, .photo--venue > video { object-position: var(--subject-tall, 50% 50%); }
+  .hero__frames::after, [dir="ltr"] .hero__frames::after { background: linear-gradient(to top, color-mix(in oklab, var(--color-paper) 94%, transparent), color-mix(in oklab, var(--color-paper) 70%, transparent) 40%, transparent 75%); }
+  /* The venue, though, stands in the top of the screen under the nav, wide enough to know the building, and fades into
+     the ground the words stand on, so the shade under the words is lighter while it shows. */
+  /* A phone shows the middle half of the picture, so the sign stands further in. */
+  .scene__set:not([data-for]) { --push-at: 54% 44%; --sign-at: 54% 21%; }
+  .scene__set:not([data-for]) .photo--venue.is-film-done { --sign-at: 57% 21%; }
+  .scene__set:not([data-for]) > .photo { inset: var(--nav-height) 0 auto; height: 56svh; mask-image: linear-gradient(to bottom, var(--color-ink) 62%, transparent); }
+  .hero__frames::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to top, color-mix(in oklab, var(--color-paper) 94%, transparent), color-mix(in oklab, var(--color-paper) 72%, transparent) 34%, transparent 58%); }
+  .hero__frames::before, .hero__frames::after { transition: opacity var(--dur-world) var(--ease-in-out); }
+  :root:not([data-world]) .hero__frames::after, :root[data-world] .hero__frames::before { opacity: 0; }
+  .hero__text { padding-block: var(--space-xl); }
+  /* The torch's button stands over the sky at the far side, clear of the sign. */
+  .arrival__skip { inset-block: var(--space-md) auto; inset-inline: var(--gutter) auto; }
+  .torch .torch-toggle { inset-block: var(--space-md) auto; inset-inline: auto var(--gutter); }
+  .arrival__skip, [dir="ltr"] .arrival__skip { translate: none; }
+  /* The words hold the lower part of the poster, so the venue lands high in it, and the map fills it edge to edge. */
+  .arrival { --focus-y: 23%; inset: 0; }
+  /* The map fades out before the words, so the lead line never sits on bright roads. */
+  .arrival__sky { mask-image: linear-gradient(to bottom, var(--color-ink) 55%, transparent 88%); }
+  .arrival__sky img { --edge-y: 3%; inline-size: max(116cqw, calc(116cqh * 0.55)); }
+  .arrival__credit { inset-block: var(--space-md) auto; inset-inline-end: var(--gutter); line-height: 44px; }
+  /* The map's roads run on under the words, so while it flies the words carry a halo of the ground's colour. */
+  .hero__text :is(h1, .lead) { transition: text-shadow var(--dur-long) var(--ease-out); }
+  .hero__in:has(.is-arriving) .hero__text :is(h1, .lead) { text-shadow: 0 0 var(--space-md) var(--color-paper), 0 0 var(--space-xs) var(--color-paper); }
+}
+
+/* Sections part by the three scaffold steps, mixed. */
+.section { padding-block-start: var(--section-gap); }
+.section--s { padding-block-start: var(--section-gap-s); }
+.section--l { padding-block-start: var(--section-gap-l); }
+.head { display: grid; justify-items: start; gap: var(--space-lg); margin-block-end: var(--space-2xl); }
+
+/* A house's world. Once a house is picked the whole page stands on its ground and under its light, which hangs at
+   the top of the scene and comes on in that house's own way: a torch catching, a tube striking, a cold room
+   opening. Near the light, the wall it falls on shows. tokens.css holds what each house brings, and booking.js
+   names the picked house on the root. Going from one house to the next is slow: the page's colours glide to the new
+   world's (tokens.css registers them so they can), the old light fades as the new one comes on, and the scene
+   crossfades. The page's own parts sit above the scene. */
+main, .footer { position: relative; z-index: var(--z-base); }
+/* The change of world is one slow crossfade of the whole page (booking.js starts a view transition): the old page
+   fades into the new over --dur-world, on the graphics card. The page stays live under it, so taps and scrolling go
+   through to the new page while it fades in. */
+::view-transition { pointer-events: none; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--dur-world); animation-timing-function: var(--ease-in-out); }
+/* A link that opens on a house opens in its world at once: booking.js sets this for that moment only. */
+.no-fade, .no-fade * { transition: none !important; }
+.scene__light { position: absolute; inset: 0; opacity: 0; transition: opacity var(--dur-world) var(--ease-in-out); }
+.scene__light::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 75% 58% at 50% 0%, color-mix(in oklab, var(--world-glow) 24%, transparent), transparent 76%), var(--world-wall); mask-image: radial-gradient(ellipse 78% 60% at 50% 0%, var(--color-ink) 30%, transparent 78%); }
+:root[data-world="tomb"] .scene__light[data-world="tomb"], :root[data-world="case"] .scene__light[data-world="case"], :root[data-world="morgue"] .scene__light[data-world="morgue"] { opacity: 1; }
+/* Each house's light simply comes up as the last one goes down, slowly and evenly, with the colours and the picture
+   (the transition above): no flicker, no cut, the owner's word of 2026-11-17. */
+
+/* The three doors. Each stands in its own house's world whichever one is picked. The picked one is lit, and the
+   other two fall back. */
+.doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs); clear: both; }
+/* The hidden radios sit in the middle of their own row, so a tap that focuses one never scrolls the page to it. */
+.doors, .seg { position: relative; }
+.doors input, .seg input { inset-block-start: 50%; inset-inline-start: 50%; }
+.doors input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.door { position: relative; isolation: isolate; display: grid; align-content: end; gap: var(--space-2xs); min-height: 10rem; padding: var(--space-md); overflow: hidden; border-radius: var(--radius-well); background: var(--color-paper); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); cursor: pointer; transition: box-shadow var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.door::before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse 110% 70% at 50% 0%, color-mix(in oklab, var(--world-glow) 46%, transparent), transparent 78%), var(--world-wall); opacity: 0.6; transition: opacity var(--dur-long) var(--ease-out); }
+.doors:has(input:checked) .door::before { opacity: 0.35; }
+.doors .door:hover::before { opacity: 0.8; }
+.door:active { transform: scale(0.98); }
+.doors .door:active::before { opacity: 0.9; }
+.doors input:checked + .door { box-shadow: inset 0 0 0 2px var(--world); }
+.doors input:checked + .door::before, .doors input:checked + .door:hover::before { opacity: 1; }
+.doors input:focus-visible + .door { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.door__name { font-family: var(--world-face); font-weight: var(--world-face-weight); font-synthesis: none; font-size: calc(var(--text-xl) * var(--world-face-size)); line-height: 1.3; text-shadow: var(--world-name-fault); overflow-wrap: break-word; }
+.door__fact { font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+/* The booking counter: steps on hairlines, the price in one smoked well. */
+.counter { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; gap: var(--space-2xl); }
+.counter__steps { display: grid; gap: var(--space-lg); min-width: 0; }
+.step { min-width: 0; margin: 0; padding: var(--space-lg) 0 0; border: 0; border-block-start: var(--rule-hair) solid var(--color-rule); }
+.step > legend { float: inline-start; width: 100%; margin-block-end: var(--space-sm); padding: 0; font-size: var(--text-sm); color: var(--color-muted); }
+.seg { display: flex; flex-wrap: wrap; gap: var(--space-xs); clear: both; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg label { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 var(--space-md); border-radius: var(--radius-pill); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); white-space: nowrap; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out); }
+.seg label:hover { background: var(--color-paper-2); }
+/* What is picked shows in the house's light once the page is in a house's world. */
+.seg input:checked + label { background: var(--world, var(--color-ink)); color: var(--color-paper); box-shadow: none; }
+.seg input:focus-visible + label { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.seg input:disabled + label { opacity: 0.55; cursor: not-allowed; }
+.times { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.times label { font-variant-numeric: tabular-nums; }
+.times small { margin-inline-start: var(--space-2xs); font-size: var(--text-sm); }
+
+/* The teaser: ten seconds of the picked house. It rests in the tint of the house's world and plays in its own colour. */
+.teaser { min-width: 0; }
+.teaser__wait { font-size: var(--text-sm); }
+/* The trailer's card: a still from it in the house's tint, which clears when the visitor reaches for it. */
+.teaser__card { position: relative; display: block; inline-size: 100%; max-width: 100%; aspect-ratio: 16 / 9; margin: 0; padding: 0; overflow: hidden; border: 0; border-radius: var(--radius-well); background: var(--color-paper-2); color: var(--color-ink); cursor: pointer; }
+.teaser__card img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; filter: var(--world-photo, grayscale(1) sepia(0.55) contrast(1.12) brightness(0.9)); transition: filter var(--dur-long) var(--ease-out); }
+.teaser__card:is(:hover, :focus-visible) img { filter: none; }
+.teaser__card:is(:hover, :focus-visible) .teaser__play { background: var(--color-paper-3); }
+.teaser__card:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.teaser__card:active .teaser__play { transform: translateY(1px); }
+.teaser__play { position: absolute; z-index: 2; inset-block-end: var(--space-md); inset-inline-start: var(--space-md); pointer-events: none; }
+.teaser__icon { inline-size: 0.9em; block-size: 0.9em; fill: currentColor; }
+.teaser__time { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+/* The trailer's own screen fills the whole window: the film grows out of its card into it (teaser.js), on the
+   cinema dark, and both fade back into the house's world when it ends. */
+.trailer { position: fixed; inset: 0; display: grid; place-items: center; inline-size: 100%; block-size: 100%; max-inline-size: none; max-block-size: none; margin: 0; padding: 0; overflow: hidden; border: 0; background: transparent; color: var(--color-ink); }
+.trailer:not([open]) { display: none; }
+.trailer::backdrop { background: transparent; }
+.trailer__shade { position: absolute; inset: 0; background: var(--color-screen); }
+.trailer video { position: relative; display: block; inline-size: min(100vw, 100dvh * 16 / 9); max-inline-size: 100%; aspect-ratio: 16 / 9; background: var(--color-screen); transform-origin: 0 0; }
+.trailer__close { position: absolute; z-index: 2; inset-block-start: max(var(--space-md), env(safe-area-inset-top, 0px)); inset-inline-end: max(var(--space-md), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
+/* The checkout (checkout.js): the rules to agree to, the name and number, and the deposit, one step at a time. */
+.checkout { inline-size: min(100% - 2 * var(--gutter), 34rem); max-inline-size: none; max-block-size: min(92svh, 56rem); margin: auto; padding: 0; overflow: auto; overscroll-behavior: contain; border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-well); background: var(--color-paper-2); color: var(--color-ink); }
+.checkout::backdrop { background: color-mix(in oklab, var(--color-screen) 82%, transparent); }
+.checkout__body { display: grid; gap: var(--space-md); padding: var(--space-lg); }
+.checkout__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
+.checkout__title { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-xl); line-height: 1.2; }
+.checkout__pick { margin: 0; color: var(--color-ink-2); }
+.checkout__steps { display: flex; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; counter-reset: step; font-size: var(--text-sm); color: var(--color-muted); }
+.checkout__steps li { counter-increment: step; padding-block-end: var(--space-2xs); border-block-end: 2px solid var(--color-rule); flex: 1; }
+.checkout__steps li::before { content: counter(step) ". "; }
+.checkout__steps li[aria-current="step"] { color: var(--color-ink); border-color: var(--world, var(--color-accent)); }
+.checkout__step { display: grid; gap: var(--space-md); }
+.checkout__step h3 { margin: 0; font-size: var(--text-lg); }
+.checkout__step h3:focus { outline: none; }
+.checkout__step h3:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.checkout__row { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.checkout__preview { margin: 0; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-well); background: var(--color-paper-3); color: var(--color-ink-2); font-size: var(--text-sm); }
+.rules { display: grid; gap: var(--space-xs); margin: 0; padding-inline-start: 1.2em; color: var(--color-ink-2); }
+.agree { display: flex; align-items: flex-start; gap: var(--space-sm); min-block-size: 44px; cursor: pointer; }
+.agree input { flex: none; inline-size: 22px; block-size: 22px; margin: 0.15em 0 0; accent-color: var(--world, var(--color-accent)); }
+.agree input:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.agree__more { margin: 0; font-size: var(--text-sm); color: var(--color-muted); }
+.field { display: grid; gap: var(--space-2xs); min-width: 0; }
+.field input:not([type="file"]) { inline-size: 100%; min-block-size: 48px; padding-inline: var(--space-md); border: var(--rule-hair) solid var(--color-muted); border-radius: var(--radius-well); background: var(--color-paper); color: var(--color-ink); font: inherit; }
+/* The picture of the transfer: the browser's own file button is hidden behind one in the page's voice. */
+.upload { position: relative; display: grid; justify-items: start; gap: var(--space-xs); }
+.upload input { position: absolute; inset-block-start: 0; inset-inline-start: 0; opacity: 0; width: 1px; height: 1px; }
+.upload input:focus-visible + label { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.field input:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.field__note { margin: 0; font-size: var(--text-sm); color: var(--color-muted); }
+/* Each method a card the visitor taps: its logos, its name, and what happens next. */
+.methods { position: relative; display: grid; gap: var(--space-xs); }
+.methods input { position: absolute; inset-block-start: 50%; inset-inline-start: 50%; opacity: 0; width: 1px; height: 1px; }
+.method { display: grid; gap: var(--space-2xs); padding: var(--space-md); border-radius: var(--radius-well); background: var(--color-paper); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); cursor: pointer; transition: box-shadow var(--dur-short) var(--ease-out); }
+.method:hover { box-shadow: inset 0 0 0 var(--rule-hair) var(--color-muted); }
+.methods input:checked + .method { box-shadow: inset 0 0 0 2px var(--world, var(--color-accent)); }
+.methods input:focus-visible + .method { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.method__logos { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+.logo { display: inline-flex; align-items: center; min-block-size: 28px; padding-inline: var(--space-xs); border-radius: var(--radius-well); background: var(--color-paper-3); color: var(--color-ink); font-size: var(--text-xs); font-weight: 500; }
+.method__name { font-weight: 500; }
+.method__how { font-size: var(--text-sm); color: var(--color-muted); }
+.instapay { display: grid; gap: var(--space-md); padding: var(--space-md); border-radius: var(--radius-well); background: var(--color-paper); }
+.instapay__steps { display: grid; gap: var(--space-xs); margin: 0; padding-inline-start: 1.2em; }
+.proof img { display: block; max-inline-size: min(100%, 14rem); max-block-size: 18rem; object-fit: contain; border-radius: var(--radius-well); }
+@media (prefers-reduced-motion: reduce) { .teaser__card img { transition: none; } }
+
+.house { display: grid; gap: var(--space-lg); min-width: 0; }
+/* The house's name is set in its own face, sized so the three faces stand the same height. */
+.house > h3 { font-family: var(--world-face, var(--font-display)); font-weight: var(--world-face-weight, var(--display-weight)); font-size: calc(var(--text-display-s) * var(--world-face-size, 1)); line-height: 1.2; text-shadow: var(--world-name-fault, none); }
+.house > .lead { color: var(--color-ink-2); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-lg); margin: 0; }
+.facts > div { padding-inline: var(--space-lg); border-inline-start: var(--rule-hair) solid var(--color-rule); }
+.facts > div:nth-child(3n+1) { padding-inline-start: 0; border-inline-start: 0; }
+.facts > div:nth-child(3n) { padding-inline-end: 0; }
+.facts dt { font-size: var(--text-sm); color: var(--color-muted); }
+.facts dd { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-xl); line-height: 1.3; font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+/* Heat marks how frightening a house is, and nothing else. */
+.heat { display: inline-block; inline-size: var(--space-lg); block-size: var(--space-2xs); margin-inline-end: var(--space-xs); border-radius: var(--radius-pill); background: var(--heat-3); vertical-align: middle; }
+.heat--5 { background: var(--heat-4); }
+
+.ticket { position: sticky; top: calc(var(--nav-height) + var(--space-lg)); z-index: var(--z-base); display: grid; justify-items: start; gap: var(--space-md); padding: var(--space-xl); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-well); background: var(--color-paper-2); }
+.stepper { display: grid; gap: var(--space-xs); }
+.stepper > label { font-size: var(--text-sm); color: var(--color-muted); }
+.stepper__row { display: flex; align-items: center; gap: var(--space-xs); }
+.stepper button { display: inline-flex; align-items: center; justify-content: center; inline-size: 48px; min-height: 48px; padding: 0; border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--color-ink); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-muted); font-size: var(--text-lg); line-height: 1; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out); }
+.stepper button:hover { background: var(--color-paper-3); }
+.stepper button:active { transform: translateY(1px); }
+.stepper button:disabled { opacity: 0.55; cursor: not-allowed; }
+.stepper input { inline-size: 5ch; min-height: 48px; padding: 0; border: var(--rule-hair) solid var(--color-muted); border-radius: var(--radius-well); background: var(--color-paper); color: var(--color-ink); font-size: var(--text-lg); font-variant-numeric: tabular-nums; text-align: center; appearance: textfield; outline: 2px solid transparent; outline-offset: -3px; }
+.stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.stepper input:focus-visible { outline-color: var(--color-focus); }
+.stepper input:disabled { opacity: 0.55; cursor: not-allowed; }
+.where { inline-size: 100%; }
+.where .optional { color: var(--color-muted); font-size: var(--text-xs); }
+.where select { inline-size: 100%; min-height: 48px; padding-block: 0; padding-inline: var(--space-md) var(--space-xl); border: var(--rule-hair) solid var(--color-muted); border-radius: var(--radius-well); background: var(--color-paper); color: var(--color-ink); font: inherit; font-size: var(--text-md); cursor: pointer; outline: 2px solid transparent; outline-offset: -3px; }
+.where select:focus-visible { outline-color: var(--color-focus); }
+.figure { font-family: var(--font-display); font-weight: var(--display-weight); font-variant-numeric: lining-nums tabular-nums; line-height: 1; }
+.unit { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-title); }
+.price { margin-block-start: var(--space-sm); line-height: 1; }
+.price .figure { font-size: var(--text-display); font-variant-numeric: lining-nums tabular-nums; }
+.total { color: var(--color-ink-2); font-variant-numeric: tabular-nums; }
+.nudge, .help { min-height: 1lh; font-size: var(--text-sm); color: var(--color-ink-2); }
+.terms { font-size: var(--text-sm); color: var(--color-muted); }
+.fill { padding: 0 0.25em; border: 1px dashed color-mix(in oklch, var(--color-muted) 70%, transparent); border-radius: 3px; color: var(--color-muted); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* The tomb's names in hieroglyphs, in its light. Each is a picture of the signs (tools/tomb-wall/bake.mjs, which
+   prints the sizes repeated here), used as a mask over the light, so it glides with the world's colours. */
+.hiero { --h: 4.25rem; display: block; block-size: var(--h); inline-size: calc(var(--h) * var(--hiero-w) / var(--hiero-h)); max-inline-size: 100%; background: var(--world, var(--color-ink)); mask: var(--hiero) center / contain no-repeat; }
+.hiero--tomb { --hiero: url("images/hiero-tomb.png"); --hiero-w: 304; --hiero-h: 76; }
+.hiero--brand { --hiero: url("images/hiero-brand.png"); --hiero-w: 283; --hiero-h: 76; }
+.footer__glyphs { display: none; margin-block-start: var(--space-md); margin-inline-start: auto; }
+:root[data-world="tomb"] .footer__glyphs { display: block; }
+
+/* The finder: three questions on hairlines, and beside them a door that opens on the house that fits, in that
+   house's world and over its picture. */
+.finder { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: stretch; gap: var(--space-2xl); }
+.finder__ask { display: grid; align-content: start; gap: var(--space-lg); min-width: 0; }
+.verdict { position: relative; isolation: isolate; display: grid; align-content: end; justify-items: start; gap: var(--space-md); min-height: 32rem; padding: var(--space-xl); overflow: hidden; border-radius: var(--radius-well); background: var(--color-paper-2); box-shadow: inset 0 0 0 var(--rule-hair) var(--color-rule); }
+.verdict__wait, .verdict__why { color: var(--color-ink-2); }
+.verdict__doors { display: grid; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.verdict__doors li { font-family: var(--world-face); font-weight: var(--world-face-weight); font-synthesis: none; font-size: calc(var(--text-2xl) * var(--world-face-size)); line-height: 1.3; color: var(--world); opacity: 0.8; text-shadow: var(--world-name-fault); }
+.verdict__why:empty { display: none; }
+.verdict__house { display: grid; justify-items: start; gap: var(--space-sm); color: var(--color-ink-2); }
+.verdict__picture { position: absolute; z-index: -1; inset: 0; margin: 0; background: var(--color-paper); }
+.verdict__picture img { width: 100%; height: 100%; object-fit: cover; filter: var(--world-photo); }
+/* The words stand at the foot of the door, on the house's own dark. */
+.verdict__picture::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in oklab, var(--color-paper) 96%, transparent), color-mix(in oklab, var(--color-paper) 80%, transparent) 46%, transparent 82%); }
+.verdict__name { font-family: var(--world-face); font-weight: var(--world-face-weight); font-synthesis: none; font-size: calc(var(--text-display-s) * var(--world-face-size)); line-height: 1.2; color: var(--color-ink); text-shadow: var(--world-name-fault); }
+.verdict__facts { font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+/* The house that opens settles in part by part. The block itself never moves or fades: that would hold its picture
+   inside it, and lay it over the lines beside it, instead of under the whole door. */
+.verdict__house.is-entering > * { animation: house-in var(--dur-long) var(--ease-out) both; }
+.verdict__house.is-entering > .verdict__picture { animation-name: verdict-in; }
+@keyframes verdict-in { from { opacity: 0; } to { opacity: 1; } }
+.verdict__house.is-entering .verdict__name { animation: house-in var(--dur-long) var(--ease-out) both, var(--world-name-in, none) 0.6s steps(1, end) var(--dur-short) both; }
+
+/* The place: the address as the head, its facts as rows. */
+.place { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: start; gap: var(--gap-columns); }
+.place .head { margin-block-end: 0; }
+.rows { margin: 0; border-block-end: var(--rule-hair) solid var(--color-rule); }
+.rows > div { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); align-items: baseline; gap: var(--gap-columns); padding-block: var(--space-lg); border-block-start: var(--rule-hair) solid var(--color-rule); }
+.rows dt { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-title); line-height: 1.3; }
+.rows dd { margin: 0; font-size: var(--text-lead); color: var(--color-ink-2); }
+.rows a { font-variant-numeric: tabular-nums; }
+
+/* The close: the brand line the owners already use, and the booking again. */
+.band { margin-block-start: var(--section-gap); padding-block: var(--section-gap-s); background: var(--color-paper-2); color: var(--color-ink); }
+.band__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-xl); }
+.band h2 { max-width: none; font-size: var(--text-display-s); }
+
+/* Footer: a mast, the wordmark over the links. */
+.footer { padding-block: var(--space-3xl) var(--space-xl); }
+.footer__mark { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-display-s); line-height: 1; text-align: end; }
+.footer__links { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); margin: var(--space-xl) 0 0; padding: 0; list-style: none; }
+.footer__links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.rows a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer__links a:hover { text-decoration: underline; }
+.footer small { display: block; margin-block-start: var(--space-xl); font-size: var(--text-sm); color: var(--color-muted); }
+
+/* The days: a rail of the next seven, today first. The padding keeps a focus ring from being cut by the scroller. */
+.days { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; margin: calc(var(--space-2xs) * -1); padding: var(--space-2xs); }
+.days label { scroll-snap-align: start; }
+.days small { margin-inline-start: var(--space-2xs); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.next, .hint { min-height: 1lh; margin-block-start: var(--space-sm); font-size: var(--text-sm); color: var(--color-ink-2); }
+/* The ticket names what is picked so far. */
+.pick { min-height: 1lh; font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-title); line-height: 1.3; }
+/* A newly picked house settles in. */
+.house.is-entering { animation: house-in var(--dur-long) var(--ease-out) both; }
+@keyframes house-in { from { opacity: 0; transform: translateY(var(--space-xs)); } to { opacity: 1; transform: none; } }
+/* A house whose name has a fault in its signal shows it once as the house arrives: the name jumps in slices. */
+.house.is-entering > h3 { animation: var(--world-name-in, none) 0.6s steps(1, end) var(--dur-short) both; }
+@keyframes signal-fault {
+  from, 76%, to { transform: none; clip-path: inset(0); }
+  14% { transform: translateX(-0.06em) skewX(-8deg); clip-path: inset(8% 0 54% 0); }
+  30% { transform: translateX(0.05em); clip-path: inset(46% 0 6% 0); }
+  46% { transform: translateX(-0.03em) skewX(6deg); clip-path: inset(0 0 68% 0); }
+  62% { transform: translateX(0.04em); clip-path: inset(60% 0 0 0); }
+}
+
+/* Motion: anchors glide, each part settles once as it arrives, and the nav steps aside on the way down.
+   The .js class is set by the page's first script, so with scripting off nothing is held back. */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.js [data-reveal] { opacity: 0; transform: translateY(var(--space-xs)); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+.nav { transition: transform var(--dur-long) var(--ease-out); }
+.nav.is-away:not(:focus-within) { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .house.is-entering, .house.is-entering > h3, .verdict__house.is-entering > *, .verdict__house.is-entering .verdict__name { animation: none; }
+  .nav.is-away:not(:focus-within) { transform: none; }
+}
+
+/* The booking bar, phones only: it rises when no other booking button is in view. */
+.dock { display: none; }
+
+@media (max-width: 60rem) {
+  .dock { position: fixed; inset: auto 0 0; z-index: var(--z-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: var(--space-sm) var(--gutter) calc(var(--space-sm) + env(safe-area-inset-bottom, 0px)); border-block-start: var(--rule-hair) solid var(--color-rule); background: var(--color-paper-2); color: var(--color-ink); transition: transform var(--dur-long) var(--ease-out), visibility 0s linear var(--dur-long); }
+  .js .dock { transform: translateY(100%); visibility: hidden; }
+  .js .dock.is-on { transform: none; visibility: visible; transition-delay: 0s; }
+  .dock__price { display: flex; align-items: baseline; gap: var(--space-xs); line-height: 1; }
+  .dock__price .figure { font-size: var(--text-2xl); font-variant-numeric: lining-nums tabular-nums; }
+  .footer { padding-block-end: calc(var(--space-xl) + var(--space-3xl)); }
+  .counter { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .ticket { position: static; justify-items: stretch; padding: var(--space-lg); }
+  .ticket .btn { inline-size: 100%; }
+  .finder { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .verdict { min-height: 26rem; padding: var(--space-lg); }
+  .place { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+}
+@media (max-width: 40rem) {
+  /* The three houses stay on one line, and the nine times set three by three. */
+  .seg:not(.times) { flex-wrap: nowrap; overflow-x: auto; }
+  .seg:not(.times) label { padding: 0 var(--space-sm); }
+  .times { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .door { min-height: 9rem; padding: var(--space-sm); }
+  .door__name { font-size: calc(var(--text-lg) * var(--world-face-size)); }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts > div:nth-child(n) { padding-inline: var(--space-lg); border-inline-start: var(--rule-hair) solid var(--color-rule); }
+  .facts > div:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .facts > div:nth-child(even) { padding-inline-end: 0; }
+  .rows > div { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
+  /* The finder's answers wrap rather than scroll, so every one is in sight. */
+  .finder .seg { flex-wrap: wrap; overflow: visible; }
+  .hiero { --h: 3.5rem; }
+}

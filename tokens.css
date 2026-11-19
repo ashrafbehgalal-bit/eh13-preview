@@ -1,0 +1,89 @@
+:root {
+  color-scheme: dark;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.5rem, 4vw + 0.75rem, 4.25rem); --text-display: clamp(3.5rem, 5.6vw + 1rem, 6.5rem);
+  --text-section: clamp(2.5rem, 3vw + 1rem, 4rem); --text-title: clamp(1.375rem, 0.8vw + 1rem, 1.875rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms; --dur-world: 3.2s;
+  --color-error: oklch(72% 0.15 27); --color-success: oklch(76% 0.13 150);
+  --nav-height: 64px; --torch-size: clamp(10rem, 28vw, 20rem);
+  /* The torch on a touch screen: a wider light, held a little above the fingertip so the finger does not hide it. */
+  --torch-size-touch: clamp(12rem, 52vw, 16rem); --torch-lift-touch: 72px;
+  /* How dark the veil over the scene is: in a house's world, over the venue, and both on a touch screen, where no
+     mouse keeps a light on, so the picture has to show through by itself. */
+  /* The venue's lit sign: the warm of the picture's brightest tenth (tools/photos/prepare.py), lifted, and where the sign
+     stands in the picture. */
+  --venue-glow: oklch(84% 0.12 68); --sign-at: 59% 21%;
+  --veil-world: 88%; --veil-venue: 70%; --veil-venue-touch: 30%; --veil-world-touch: 55%;
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: oklch(13% 0.012 40); --color-paper-2: oklch(17.5% 0.016 40); --color-paper-3: oklch(22% 0.018 40);
+  --color-ink: oklch(94% 0.02 80); --color-ink-2: oklch(84% 0.025 70); --color-muted: oklch(72% 0.03 60);
+  /* The cinema dark a trailer plays on: the same in every world. */
+  --color-screen: oklch(5% 0.006 40);
+  --color-rule: oklch(96% 0.01 80 / 0.12);
+  --color-accent: oklch(54% 0.21 27); --color-accent-ink: oklch(97% 0.015 80); --color-focus: oklch(76% 0.19 56);
+  --heat-0: oklch(12% 0.012 40); --heat-1: oklch(22% 0.07 22); --heat-2: oklch(40% 0.16 27); --heat-3: oklch(60% 0.21 36);
+  --heat-4: oklch(76% 0.19 56); --heat-5: oklch(89% 0.14 78); --heat-6: oklch(98% 0.04 95);
+  /* The owner's pick (2026-11-19, from five set side by side): a geometric Kufi for the display, a clean modern sans
+     for the text. */
+  --font-display: "Reem Kufi", "Readex Pro", system-ui, sans-serif; --font-body: "Readex Pro", system-ui, sans-serif;
+  --radius-card: 28px; --radius-well: 16px; --radius-pill: 999px; --rule-hair: 1px;
+  --shadow-card: 0 50px 90px -30px oklch(8% 0.01 40 / 0.5);
+  --tracking-display: 0; --display-weight: 600;
+  /* The three houses. Each brings its light as it falls on things and as it hangs in the air, a ground and two wells
+     tinted by it, and the face its name is set in. Case 404's and the morgue's hues are their own pictures', as
+     tools/photos/prepare.py measures them. Case 404 (tools/photos/prepared/case-cage.jpg): 253 in its middle and 264 in its dark; its
+     light is at 229, held at 234, on the blue side of the cyan the design linter bans on dark. The morgue
+     (tools/photos/prepared/morgue-gauze.jpg): 27 in its middle and 30 in its light. The tomb keeps the gold of its torchlight, and its
+     walls carry hieroglyphs in a faint red (--tomb-glyph, --tomb-glyphs). */
+  --tomb-light: oklch(84% 0.12 84); --tomb-glow: oklch(68% 0.15 68); --tomb-ground: oklch(14.5% 0.022 70); --tomb-well: oklch(19% 0.03 70); --tomb-well-2: oklch(24% 0.034 70);
+  --tomb-glyph: oklch(52% 0.17 27);
+  /* The wall: columns of hieroglyphs, among them Escape Hub 13, "the tomb" and "the living king" (one tile, drawn by
+     tools/tomb-wall/bake.mjs, 352 by 528 on the page). */
+  --tomb-glyphs: url("images/tomb-wall.webp"); --tomb-glyphs-size: 352px 528px;
+  --case-light: oklch(85% 0.075 234); --case-glow: oklch(56% 0.16 253); --case-ground: oklch(13.5% 0.04 264); --case-well: oklch(18.5% 0.05 260); --case-well-2: oklch(23.5% 0.056 257);
+  --morgue-light: oklch(85% 0.07 30); --morgue-glow: oklch(56% 0.17 27); --morgue-ground: oklch(13.5% 0.035 22); --morgue-well: oklch(18.5% 0.045 24); --morgue-well-2: oklch(23.5% 0.05 25);
+  --font-tomb: "Kufam", "Reem Kufi", system-ui, sans-serif; --font-morgue: "Rakkas", "Reem Kufi", system-ui, sans-serif;}
+
+/* The colours a house's world changes, registered as colours so the page can glide from one world to the next
+   (styles.css) instead of jumping. Each starts at the brand's own value, as above. */
+@property --color-paper { syntax: "<color>"; inherits: true; initial-value: oklch(13% 0.012 40); }
+@property --color-paper-2 { syntax: "<color>"; inherits: true; initial-value: oklch(17.5% 0.016 40); }
+@property --color-paper-3 { syntax: "<color>"; inherits: true; initial-value: oklch(22% 0.018 40); }
+@property --color-rule { syntax: "<color>"; inherits: true; initial-value: oklch(96% 0.01 80 / 0.12); }
+@property --heat-3 { syntax: "<color>"; inherits: true; initial-value: oklch(60% 0.21 36); }
+@property --heat-4 { syntax: "<color>"; inherits: true; initial-value: oklch(76% 0.19 56); }
+@property --world { syntax: "<color>"; inherits: true; initial-value: oklch(94% 0.02 80); }
+
+/* Whatever carries data-world stands in that house's world: the page itself once a house is picked (booking.js
+   names it on the root), and each of the three doors always. The tomb is seen by
+   torchlight, the hospital in the blue of its caged ward, and the morgue in the red of its blood. Each light falls
+   on a plain dark (--world-wall: none): the drawn wall patterns, carved columns and square tiles, were taken off at the
+   owner's word, 2026-11-17. The photographs there take the same tint. Each name has its own voice: the tomb's is cut
+   like an inscription, the morgue's is drawn like an old film poster, and the hospital's is the page's plain face
+   with a fault in its signal, which jumps once as its world comes on. */
+[data-world="tomb"] {
+  --world: var(--tomb-light); --world-glow: var(--tomb-glow); --world-ground: var(--tomb-ground); --world-well: var(--tomb-well); --world-well-2: var(--tomb-well-2);
+  --world-face: var(--font-tomb); --world-face-weight: 700; --world-face-size: 0.78; --world-name-fault: none; --world-name-in: none;
+  --world-photo: grayscale(1) sepia(0.75) hue-rotate(0deg) saturate(1) contrast(1.12) brightness(0.9);
+  --world-wall: none;
+}
+[data-world="case"] {
+  --world: var(--case-light); --world-glow: var(--case-glow); --world-ground: var(--case-ground); --world-well: var(--case-well); --world-well-2: var(--case-well-2);
+  --world-face: var(--font-body); --world-face-weight: 500; --world-face-size: 0.9; --world-name-in: none;
+  --world-name-fault: 0.04em 0 color-mix(in oklab, var(--case-light) 70%, transparent), -0.04em 0 color-mix(in oklab, var(--color-accent) 85%, transparent);
+  --world-photo: grayscale(1) sepia(1) hue-rotate(170deg) saturate(4) contrast(1.12) brightness(0.9);
+  --world-wall: none;
+}
+[data-world="morgue"] {
+  --world: var(--morgue-light); --world-glow: var(--morgue-glow); --world-ground: var(--morgue-ground); --world-well: var(--morgue-well); --world-well-2: var(--morgue-well-2);
+  --world-face: var(--font-morgue); --world-face-weight: 400; --world-face-size: 1.04; --world-name-fault: none; --world-name-in: none;
+  --world-photo: grayscale(1) sepia(1) hue-rotate(-25deg) saturate(3) contrast(1.12) brightness(0.9);
+  --world-wall: none;
+}
+[data-world] {
+  --color-paper: var(--world-ground); --color-paper-2: var(--world-well); --color-paper-3: var(--world-well-2);
+  --color-rule: color-mix(in oklab, var(--world) 20%, transparent); --heat-3: var(--world); --heat-4: var(--world);
+}

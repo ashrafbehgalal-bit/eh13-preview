@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#120b09">
+  <title>Escape Hub 13 · قبل ما تدخلوا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="crm.css">
+  <style>
+    /* The player's page: one column, a phone in one hand, at the desk's tablet or from the link the booker sent. */
+    .w { width: min(100%, 520px); margin-inline: auto; padding: 24px 16px calc(32px + env(safe-area-inset-bottom)); display: grid; gap: 18px; }
+    .w__brand { color: var(--muted); font-size: 0.8125rem; letter-spacing: 0.08em; direction: ltr; text-align: right; }
+    .w h1 { font: 700 2.2rem/1.2 var(--font-display); }
+    .w__trip { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--rule); }
+    .w__trip b { display: block; }
+    .w fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .w legend { font-weight: 600; margin-bottom: 4px; padding: 0; }
+    .rules { padding: 12px 14px; border-radius: 12px; background: var(--well); border: 1px dashed var(--rule-2); color: var(--ink-2); font-size: 0.875rem; }
+    .sign { position: relative; border-radius: 12px; border: 1px solid var(--rule-2); background: var(--surface); touch-action: none; }
+    .sign canvas { display: block; width: 100%; height: 160px; }
+    .sign__hint { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 0.875rem; pointer-events: none; }
+    .err { color: var(--bad); font-size: 0.875rem; min-height: 1.4em; }
+    .done { text-align: center; display: grid; gap: 14px; justify-items: center; padding-top: 24px; }
+    .done__mark { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in oklab, var(--good) 20%, transparent); color: var(--good); }
+    .done__mark svg { width: 36px; height: 36px; }
+    .row3 { display: grid; gap: 8px; grid-template-columns: 1fr 1fr 1.2fr; }
+  </style>
+</head>
+<body class="is-player">
+  <!-- The venue at night, under a veil a torch opens (crm/backdrop.js). -->
+  <div class="backdrop" aria-hidden="true"><div class="backdrop__photo"></div><div class="backdrop__veil"></div><div class="backdrop__glow"></div><div class="backdrop__grain"></div></div>
+  <main class="w" data-page>
+    <p class="w__brand">Escape Hub 13</p>
+    <h1>قبل ما تدخلوا</h1>
+    <p class="muted">كل لاعب يملا الصفحة دي لنفسه: دقيقة واحدة، وتدخلوا على طول من غير ورق عند الاستقبال.</p>
+    <div class="w__trip" data-trip></div>
+
+    <form class="stack" data-form novalidate>
+      <fieldset>
+        <legend>انت مين؟</legend>
+        <label class="field"><span>اسمك</span><input class="input" name="name" required minlength="2" autocomplete="name"></label>
+        <label class="field"><span>رقم الواتساب</span><input class="input ltr" name="phone" required inputmode="tel" pattern="01[0125][0-9]{8}" placeholder="01xxxxxxxxx" autocomplete="tel"></label>
+        <div class="field"><span>تاريخ ميلادك</span>
+          <div class="row3">
+            <select name="d" aria-label="اليوم"><option value="">اليوم</option></select>
+            <select name="m" aria-label="الشهر"><option value="">الشهر</option></select>
+            <select name="y" required aria-label="السنة"><option value="">السنة</option></select>
+          </div>
+          <small>السنة لازمة عشان السن المسموح. اليوم والشهر اختياري: عشان نفاكرك بعيد ميلادك.</small>
+        </div>
+        <p class="banner" data-young hidden></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>لازم توافق عليهم</legend>
+        <p class="rules">قواعد الأمان والتعليمات هتتكتب هنا بنص المكان (مستنيين النص من الأونر). الكلام ده هو نفسه اللي في خطوة «التعليمات» في الحجز على الموقع.</p>
+        <label class="check"><input type="checkbox" name="rules" required><span>قريت قواعد الأمان والتعليمات وهمشي عليها</span></label>
+        <label class="check"><input type="checkbox" name="terms" required><span>موافق على <a href="#">الشروط</a> و<a href="#">سياسة الخصوصية</a></span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>اختياري</legend>
+        <label class="check"><input type="checkbox" name="photo"><span>موافق إنهم يصوروا الفريق، وينشروا الصورة أو الفيديو على صفحاتهم</span></label>
+        <label class="check"><input type="checkbox" name="offers"><span>ابعتولي العروض والبيوت الجديدة على الواتساب (ممكن أوقفها في أي وقت)</span></label>
+      </fieldset>
+
+      <div class="field"><span>امضي هنا بصباعك</span>
+        <div class="sign"><canvas data-sign aria-label="مكان الإمضا"></canvas><span class="sign__hint" data-sign-hint>امضي هنا</span></div>
+        <button class="btn btn--small btn--ghost" type="button" data-clear style="justify-self:start">امسح الإمضا</button>
+      </div>
+
+      <p class="err" data-err aria-live="polite"></p>
+      <button class="btn" type="submit">تمام، خلصت</button>
+      <p class="note">صفحة تجريبية: ما بتبعتش ولا بتحفظ حاجة.</p>
+    </form>
+  </main>
+
+  <script src="demo.js"></script>
+  <script src="backdrop.js"></script>
+  <script>
+  (() => {
+    const D = window.EH13_CRM;
+    const $ = (s) => document.querySelector(s);
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+    const DAYS = ['الحد', 'الاتنين', 'التلات', 'الأربع', 'الخميس', 'الجمعة', 'السبت'];
+    const MIN_AGE = { tomb: 14, case: 16, morgue: 16 }; // the houses' youngest player (docs/00-business-brief.md)
+    const t12 = (t) => { const [h, m] = t.split(':').map(Number); return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h >= 12 ? 'م' : 'ص'}`; };
+
+    const code = new URLSearchParams(location.search).get('b');
+    // The booking the link names. Until the site is connected there are no bookings (unless the owner turned the
+    // demo data on), so the page then shows no trip and checks the youngest age of any house.
+    const b = D.bookings.find((x) => x.code === code) || D.bookings.find((x) => x.k === 0 && x.status === 'confirmed') || D.bookings[D.bookings.length - 1] || null;
+    const h = b ? D.HOUSE[b.house] : { name: 'البيت اللي حجزتوه', short: 'البيت', slug: '' };
+    const minAge = b ? MIN_AGE[b.house] : 14;
+    if (b) {
+      const [y, mo, d] = b.date.split('-').map(Number);
+      const day = new Date(y, mo - 1, d);
+      const booker = D.byId(b.booker).name.split(' ')[0];
+      const signedN = b.players.filter((p) => p.signed).length;
+      $('[data-trip]').innerHTML = `<span class="house-dot house-dot--${h.slug}" style="width:14px;height:14px"></span><div><b>${esc(h.name)}</b><span class="muted small">${DAYS[day.getDay()]} ${day.getDate()} ${MONTHS[day.getMonth()]} · ${t12(b.time)} · فريق ${esc(booker)} · مضى ${signedN} من ${b.size}</span></div>`;
+    } else {
+      $('[data-trip]').innerHTML = '<div><b>هنا هيظهر حجزكم</b><span class="muted small">البيت، واليوم، والميعاد، وكام واحد من الفريق مضى. (لسه مفيش حجوزات: الصفحة مش متوصلة بالموقع.)</span></div>';
+    }
+
+    const f = $('[data-form]');
+    for (let i = 1; i <= 31; i++) f.d.add(new Option(i, i));
+    MONTHS.forEach((m, i) => f.m.add(new Option(m, i + 1)));
+    const thisYear = new Date().getFullYear();
+    for (let i = thisYear - 10; i >= thisYear - 80; i--) f.y.add(new Option(i, i));
+
+    const age = () => (f.y.value ? thisYear - +f.y.value : null);
+    f.y.addEventListener('change', () => {
+      const a = age();
+      const box = $('[data-young]');
+      box.hidden = !(a != null && a < 18);
+      if (a == null) return;
+      box.innerHTML = a < minAge
+        ? `<span aria-hidden="true">◆</span><span>${esc(h.name)} من سن ${minAge} وطالع، فمش هينفع تدخله. كلّم الاستقبال يشوفولك بيت تاني.</span>`
+        : `<span aria-hidden="true">◆</span><span>تحت 18: اللي حجز بيقر إن أهلك موافقين، ولازم تكون جاي مع عيلتك.</span>`;
+    });
+
+    // The signature: a finger or a mouse on a canvas.
+    const c = $('[data-sign]');
+    const ctx = c.getContext('2d');
+    let drawn = false;
+    let last = null;
+    const size = () => {
+      const r = c.getBoundingClientRect();
+      const s = window.devicePixelRatio || 1;
+      c.width = r.width * s; c.height = r.height * s;
+      ctx.scale(s, s); ctx.lineWidth = 2.2; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#efe6d8';
+      drawn = false; $('[data-sign-hint]').hidden = false;
+    };
+    size();
+    window.addEventListener('resize', size);
+    const at = (e) => { const r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    c.addEventListener('pointerdown', (e) => { c.setPointerCapture(e.pointerId); last = at(e); });
+    c.addEventListener('pointermove', (e) => {
+      if (!last) return;
+      const p = at(e);
+      ctx.beginPath(); ctx.moveTo(...last); ctx.lineTo(...p); ctx.stroke();
+      last = p;
+      if (!drawn) { drawn = true; $('[data-sign-hint]').hidden = true; }
+    });
+    const up = () => { last = null; };
+    c.addEventListener('pointerup', up);
+    c.addEventListener('pointercancel', up);
+    $('[data-clear]').addEventListener('click', size);
+
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const err = $('[data-err]');
+      const a = age();
+      const fail = (msg, el) => { err.textContent = msg; if (el) el.focus(); };
+      if (f.name.value.trim().length < 2) return fail('اكتب اسمك.', f.name);
+      if (!f.phone.checkValidity()) return fail('رقم الواتساب لازم يكون 11 رقم ويبدأ بـ 010 أو 011 أو 012 أو 015.', f.phone);
+      if (a == null) return fail('اختار سنة ميلادك.', f.y);
+      if (a < minAge) return fail(`${h.name} من سن ${minAge} وطالع.`, f.y);
+      if (!f.rules.checked) return fail('لازم توافق على قواعد الأمان والتعليمات.', f.rules);
+      if (!f.terms.checked) return fail('لازم توافق على الشروط وسياسة الخصوصية.', f.terms);
+      if (!drawn) return fail('امضي في المربع.', null);
+      const name = f.name.value.trim().split(' ')[0];
+      $('[data-page]').innerHTML = `<div class="done">
+        <span class="done__mark"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>
+        <h1>تمام يا ${esc(name)}</h1>
+        <p class="muted">انت جاهز لـ ${esc(h.name)}. ورّي الشاشة دي في الاستقبال، أو قول اسمك بس.</p>
+        <section class="stamp-card" style="width:100%;text-align:start">
+          <h2 class="stamp-card__title">بيت ورا بيت</h2>
+          <div class="stamps">${D.HOUSES.map((x) => `<div class="stamp${b && x.slug === b.house ? ` stamp--on stamp--${x.slug}` : ''}">${x.short}</div>`).join('')}</div>
+          <p class="small">بعد الرحلة ${esc(h.short)} هيتختم على كارتك. كمّل التلاتة وخد مكافأتك.</p>
+        </section>
+        <p class="note">صفحة تجريبية: ما اتبعتش حاجة.</p></div>`;
+      window.scrollTo(0, 0);
+    });
+  })();
+  </script>
+</body>
+</html>

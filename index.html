@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Escape Hub 13: اسكيب هاوس في العبور، 90 دقيقة جوه بيت كامل</title>
+  <meta name="description" content="Escape Hub 13 في جولف سيتي مول بالعبور: تلات بيوت رعب بممثلين حقيقيين، 90 دقيقة للرحلة، ولحد 12 لاعب. احجزوا البيت والميعاد أونلاين.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@600&family=Readex+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <!-- The tomb and the morgue set their names in faces of their own. Only the letters of those two names are
+       fetched (the text value): add a letter here when a name changes or a house is added. -->
+  <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@700&family=Rakkas&display=swap&text=%2013%D8%A7%D8%A8%D8%A9%D8%AD%D8%B1%D8%B4%D9%82%D9%83%D9%84%D9%85%D9%8A" rel="stylesheet">
+  <!-- The three stylesheets load side by side, in this order: chained by @import, each waited for the one before,
+       one more trip over the line before the first paint (measured 2026-11-18). -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script>document.documentElement.classList.add('js');</script>
+  <a class="skip" href="#main">روح للمحتوى</a>
+
+  <header class="nav" data-nav>
+    <div class="container nav__in">
+      <a class="wordmark" href="#top" lang="en" dir="ltr" aria-label="Escape Hub 13، أول الصفحة">Escape Hub 13</a>
+      <div class="nav__end">
+        <!-- Shown only in a house that has a soundtrack (data-sound on its panel in the booking counter). -->
+        <button class="sound" type="button" data-sound-toggle aria-pressed="false" hidden>
+          <svg class="sound__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path class="sound__body" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/>
+            <path class="sound__waves" d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>
+            <path class="sound__off" d="M16 9.5l5 5M21 9.5l-5 5"/>
+          </svg>
+          <span class="sound__label" data-sound-label>شغّل الصوت</span>
+          <span class="sound__short" aria-hidden="true">الصوت</span>
+        </button>
+        <a class="btn btn--ghost btn--sm" href="#booking">احجز</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- data-sound: the heart that beats before a house is picked (sound.js), the owner's own (tools/audio/heart-loop.mjs). -->
+  <main id="main" data-sound="audio/heart.mp4">
+    <section class="hero" id="top">
+      <div class="container hero__in">
+        <div class="hero__text">
+          <h1>مش أوضة…<br>ده بيت كامل.</h1>
+          <p class="lead">90 دقيقة جوه بيت كامل بممثلين حقيقيين، ولحد 12 لاعب.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#booking">احجز رحلتك</a>
+            <a class="btn btn--ghost" href="https://wa.me/201118881054">اسأل على واتساب</a>
+          </div>
+        </div>
+        <!-- The stage: the hero's own layer, the size of the first screen. It holds the scene, the arrival, the torch's
+             button, and the shade the words stand in. -->
+        <div class="hero__frames">
+          <!-- The scene: the picture of the house on show, filling the screen behind the whole page. It waits in the dark
+               under a veil that the torch opens (torch.js), and the picked house's light hangs over it. The page opens on
+               the venue's two frames. A house with a picture of its own (a set with data-for) shows it instead once it is
+               picked, and booking.js crossfades from one set to the next while the page's colours move with it. Each
+               picture says where its subject stands, on a wide screen and on a phone. -->
+          <div class="scene">
+            <div class="scene__pictures">
+              <!-- The brand's own look: the venue at night. Once the map has landed, the owner's film plays once (venue.js):
+                   the camera comes round from the side of the building to its front, and rests there while the sign hums.
+                   Under it, and in its place where it cannot play (reduced motion, data saver, a slow line), the owner's
+                   picture, which the camera moves in on slowly instead. -->
+              <div class="scene__set is-on">
+                <figure class="photo photo--venue" data-slot="hero" data-alt="صورة عرضية لواجهة المكان بالليل من قدام، واليافطة منورة. عرضها 2400 بكسل على الأقل" style="--subject: 50% 50%; --subject-tall: 56% 50%">
+                  <img src="images/venue-night.webp" width="1376" height="760" alt="واجهة Escape Hub 13 بالليل، واليافطة منورة فوق المبنى والأرض مبلولة ومنورة بالأصفر" fetchpriority="high">
+                  <video class="venue-film" data-keep muted playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1" data-src="media/venue-film.mp4" data-src-small="media/venue-film-small.mp4"></video>
+                </figure>
+              </div>
+              <div class="scene__set" data-for="tomb" hidden>
+                <figure class="photo" data-slot="hero-tomb" data-alt="لقطة من جوه مقبرة الملك الحي، والممثل ظاهر فيها. عرضها 2400 بكسل على الأقل، ومن غير لوجو أو كتابة عليها">
+                  <img src="images/EcrvTsML3ew.webp" width="1080" height="1874" alt="ممثل لابس قناع جمجمة وغطا راس في إضاءة واطية" loading="lazy" style="--subject: 50% 58%; --subject-tall: 50% 58%">
+                </figure>
+              </div>
+              <div class="scene__set" data-for="case" hidden>
+                <figure class="photo" data-slot="hero-case" data-alt="لقطة عرضية من جوه الحالة 404، والقفص والسراير ظاهرين فيها. عرضها 2400 بكسل على الأقل، ومن غير لوجو أو كتابة عليها">
+                  <img src="images/case-cage.webp" width="1314" height="739" alt="أوضة في إضاءة زرقا ورا قضبان قفص، فيها سراير، وجنب واحد منهم شخصية واقفة بفستان أبيض وشعرها مغطي وشها" loading="lazy" style="--subject: 50% 50%; --subject-tall: 60% 50%">
+                </figure>
+              </div>
+              <div class="scene__set" data-for="morgue" hidden>
+                <figure class="photo" data-slot="hero-morgue" data-alt="لقطة عرضية من جوه المشرحة 13، والممثل ظاهر فيها. عرضها 2400 بكسل على الأقل، ومن غير لوجو أو كتابة عليها">
+                  <img src="images/morgue-gauze.webp" width="1600" height="906" alt="راجل لابس برنيطة سودا وشاش عليه دم مغطي عينيه، في أوضة حمرا مكتوب على حيطانها بالدم" loading="lazy" style="--subject: 50% 40%; --subject-tall: 47% 50%">
+                </figure>
+              </div>
+            </div>
+            <div class="scene__veil"></div>
+            <!-- The tomb's walls: faint red hieroglyphs over the whole page while the tomb is the house on show. -->
+            <div class="scene__glyphs"></div>
+            <div class="scene__light" data-world="tomb"></div>
+            <div class="scene__light" data-world="case"></div>
+            <div class="scene__light" data-world="morgue"></div>
+          </div>
+          <!-- The arrival: arrival.js flies down the map pictures in images/flight/ to the venue, then the frames show.
+               data-from, data-to and data-swing repeat the path in tools/map-flight/flight.json and must match it.
+               data-stop is the zoom the camera comes to rest at. -->
+          <div class="arrival" data-arrival data-from="8" data-to="17" data-stop="16.25" data-swing="-24" hidden>
+            <div class="arrival__sky" aria-hidden="true"></div>
+            <p class="arrival__place" aria-hidden="true"></p>
+            <!-- The map's data and look need their credit beside the map (ODbL, OpenMapTiles); it is here, on the map, and
+                 nowhere else since the owner took it out of the footer (2026-11-18). -->
+            <small class="arrival__credit" lang="en" dir="ltr"><a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, © OpenMapTiles, OpenFreeMap</small>
+          </div>
+          <button class="btn btn--sm btn--over arrival__skip" type="button" data-arrival-skip hidden>تخطّي</button>
+          <button class="btn btn--sm btn--over torch-toggle" type="button" data-torch-toggle aria-pressed="false">نوّروا البيت</button>
+          <p class="torch-hint">ميّلوا الموبايل، أو اضغطوا مطوّل على الصورة</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The page opens with no house picked. Once a door is picked, booking.js names the house on the root
+         (data-world) and the whole page stands in its world. tokens.css holds what each house brings. -->
+    <section class="section section--s" id="booking">
+      <div class="container">
+        <div class="head" data-reveal>
+          <h2>اختاروا البيت والميعاد.</h2>
+        </div>
+
+        <form class="counter" data-endpoint="" data-whatsapp="201118881054" novalidate data-reveal style="--i: 1">
+          <div class="counter__steps">
+            <fieldset class="step">
+              <legend>البيت</legend>
+              <!-- Three doors, each in its own house's world whichever one is picked. -->
+              <div class="doors">
+                <input type="radio" name="house" id="house-tomb" value="tomb">
+                <label class="door" for="house-tomb" data-world="tomb"><span class="door__name">مقبرة الملك الحي</span><span class="door__fact">1,000 متر</span></label>
+                <input type="radio" name="house" id="house-case" value="case">
+                <label class="door" for="house-case" data-world="case"><span class="door__name">الحالة 404</span><span class="door__fact">750 متر</span></label>
+                <input type="radio" name="house" id="house-morgue" value="morgue">
+                <label class="door" for="house-morgue" data-world="morgue"><span class="door__name">المشرحة 13</span><span class="door__fact">400 متر</span></label>
+              </div>
+              <p class="hint" data-unpicked hidden>اختاروا بيت عشان تشوفوا مواعيده.</p>
+            </fieldset>
+
+            <!-- booking.js fills the days from today's date in Cairo, and says how far off the next journey is. -->
+            <fieldset class="step" data-days hidden>
+              <legend>اليوم</legend>
+              <div class="seg days"></div>
+              <p class="next" data-next role="status"></p>
+            </fieldset>
+
+            <!-- A house shows its trailer once it is named here: data-case="trailer-case" plays media/trailer-case.mp4
+                 (trailer-case-small.mp4 on phones) after showing images/trailer-case.jpg; data-case-time is its length.
+                 The files come from tools/trailers/encode.mjs. -->
+            <div class="teaser" data-teaser data-tomb="" data-case="trailer-case" data-case-time="2:29" data-morgue="trailer-morgue" data-morgue-time="2:28">
+              <p class="teaser__wait"><span class="fill" data-fill="teaser">تريلر البيت ده</span></p>
+              <button class="teaser__card" type="button" aria-haspopup="dialog" hidden>
+                <img src="images/trailer-case.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                <span class="teaser__play btn btn--sm btn--over"><svg class="teaser__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>شوفوا التريلر <span class="teaser__time"></span></span>
+              </button>
+            </div>
+
+            <section class="house" data-house="tomb" data-max="12" data-age="14" data-sound="audio/tomb.mp4" aria-labelledby="title-tomb">
+              <h3 id="title-tomb">مقبرة الملك الحي</h3>
+              <!-- The name in hieroglyphs, read from left to right: "the tomb" (Egyptian is), then "the living king"
+                   (nswt ankh) in a cartouche. A picture drawn by tools/tomb-wall/bake.mjs, set in the tomb's light. -->
+              <span class="hiero hiero--tomb" aria-hidden="true"></span>
+              <!-- Each house's story, rooms, area and levels are the owner's own words (docs/00-business-brief.md, section 2). -->
+              <p class="lead">في 1997، علماء آثار اكتشفوا مقبرة تحت بيت مهجور، لكن الملك عاد للانتقام. محدش خرج إلا واحد، وللأسف الملك لحقه.</p>
+              <dl class="facts">
+                <div><dt>الغرف</dt><dd>10</dd></div>
+                <div><dt>المساحة</dt><dd>1,000 متر</dd></div>
+                <div><dt>الرعب</dt><dd><span class="heat heat--5" aria-hidden="true"></span>عالي</dd></div>
+                <div><dt>الألغاز</dt><dd>متوسطة</dd></div>
+                <div><dt>اللاعبين</dt><dd>3 لـ 12</dd></div>
+                <div><dt>السن</dt><dd>14+</dd></div>
+              </dl>
+              <fieldset class="step">
+                <legend>الميعاد</legend>
+                <div class="seg times">
+                  <input type="radio" name="time" id="tomb-1" value="3:30 م"><label for="tomb-1">3:30<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-2" value="5:00 م"><label for="tomb-2">5:00<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-3" value="6:30 م"><label for="tomb-3">6:30<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-4" value="8:00 م"><label for="tomb-4">8:00<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-5" value="9:30 م"><label for="tomb-5">9:30<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-6" value="11:00 م"><label for="tomb-6">11:00<small>م</small></label>
+                  <input type="radio" name="time" id="tomb-7" value="12:30 ص"><label for="tomb-7">12:30<small>ص</small></label>
+                  <input type="radio" name="time" id="tomb-8" value="2:00 ص"><label for="tomb-8">2:00<small>ص</small></label>
+                  <input type="radio" name="time" id="tomb-9" value="3:30 ص"><label for="tomb-9">3:30<small>ص</small></label>
+                </div>
+              </fieldset>
+            </section>
+
+            <section class="house" data-house="case" data-max="12" data-age="16" data-sound="audio/case-404.mp4" aria-labelledby="title-case">
+              <h3 id="title-case">الحالة 404</h3>
+              <p class="lead">شاب بيعاني من نوبات قلق، لكن الحقيقة أغرب بكتير: دكتور نفسي، وتجارب سرية على البشر. دوركم تكتشفوا الحقيقة قبل ما الوقت يخلص.</p>
+              <dl class="facts">
+                <div><dt>الغرف</dt><dd>8</dd></div>
+                <div><dt>المساحة</dt><dd>750 متر</dd></div>
+                <div><dt>الرعب</dt><dd><span class="heat heat--5" aria-hidden="true"></span>عالي</dd></div>
+                <div><dt>الألغاز</dt><dd>صعبة</dd></div>
+                <div><dt>اللاعبين</dt><dd>3 لـ 12</dd></div>
+                <div><dt>السن</dt><dd>16+</dd></div>
+              </dl>
+              <fieldset class="step">
+                <legend>الميعاد</legend>
+                <div class="seg times">
+                  <input type="radio" name="time" id="case-1" value="4:00 م"><label for="case-1">4:00<small>م</small></label>
+                  <input type="radio" name="time" id="case-2" value="5:30 م"><label for="case-2">5:30<small>م</small></label>
+                  <input type="radio" name="time" id="case-3" value="7:00 م"><label for="case-3">7:00<small>م</small></label>
+                  <input type="radio" name="time" id="case-4" value="8:30 م"><label for="case-4">8:30<small>م</small></label>
+                  <input type="radio" name="time" id="case-5" value="10:00 م"><label for="case-5">10:00<small>م</small></label>
+                  <input type="radio" name="time" id="case-6" value="11:30 م"><label for="case-6">11:30<small>م</small></label>
+                  <input type="radio" name="time" id="case-7" value="1:00 ص"><label for="case-7">1:00<small>ص</small></label>
+                  <input type="radio" name="time" id="case-8" value="2:30 ص"><label for="case-8">2:30<small>ص</small></label>
+                  <input type="radio" name="time" id="case-9" value="4:00 ص"><label for="case-9">4:00<small>ص</small></label>
+                </div>
+              </fieldset>
+            </section>
+
+            <section class="house" data-house="morgue" data-max="8" data-age="16" data-sound="audio/morgue.mp4" aria-labelledby="title-morgue">
+              <h3 id="title-morgue">المشرحة 13</h3>
+              <p class="lead">مكان مهجور، ورا بابه حكاية محدش كان مستعد يعرفها. رسالة استغاثة هتوصلكم للمكان، لكن أول ما تدخلوا هتكتشفوا إنكم مش جايين تنقذوا حد.</p>
+              <dl class="facts">
+                <div><dt>الغرف</dt><dd>6</dd></div>
+                <div><dt>المساحة</dt><dd>400 متر</dd></div>
+                <div><dt>الرعب</dt><dd><span class="heat" aria-hidden="true"></span>متوسط</dd></div>
+                <div><dt>الألغاز</dt><dd>صعبة</dd></div>
+                <div><dt>اللاعبين</dt><dd>3 لـ 8</dd></div>
+                <div><dt>السن</dt><dd>16+</dd></div>
+              </dl>
+              <fieldset class="step">
+                <legend>الميعاد</legend>
+                <div class="seg times">
+                  <input type="radio" name="time" id="morgue-1" value="3:00 م"><label for="morgue-1">3:00<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-2" value="4:30 م"><label for="morgue-2">4:30<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-3" value="6:00 م"><label for="morgue-3">6:00<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-4" value="7:30 م"><label for="morgue-4">7:30<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-5" value="9:00 م"><label for="morgue-5">9:00<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-6" value="10:30 م"><label for="morgue-6">10:30<small>م</small></label>
+                  <input type="radio" name="time" id="morgue-7" value="12:00 ص"><label for="morgue-7">12:00<small>ص</small></label>
+                  <input type="radio" name="time" id="morgue-8" value="1:30 ص"><label for="morgue-8">1:30<small>ص</small></label>
+                  <input type="radio" name="time" id="morgue-9" value="3:00 ص"><label for="morgue-9">3:00<small>ص</small></label>
+                </div>
+              </fieldset>
+            </section>
+          </div>
+
+          <div class="ticket">
+            <p class="pick" data-pick aria-live="polite"></p>
+            <div class="stepper">
+              <label for="team">عدد الفريق</label>
+              <div class="stepper__row">
+                <button type="button" data-step="-1" aria-label="فرد أقل">−</button>
+                <input id="team" name="team" type="number" inputmode="numeric" min="3" max="12" value="5" autocomplete="off">
+                <button type="button" data-step="1" aria-label="فرد زيادة">+</button>
+              </div>
+            </div>
+            <!-- "Where do you live?" (T31): optional, and the same list as HOME_AREAS in app/src/config/business.ts. -->
+            <div class="stepper where">
+              <label for="area">ساكنين فين؟ <span class="optional">(اختياري)</span></label>
+              <select id="area" name="area" autocomplete="off">
+                <option value="">اختاروا المنطقة</option>
+                <optgroup label="قريب من المكان">
+                  <option>العبور</option><option>الشروق</option><option>مدينتي</option><option>الرحاب</option>
+                  <option>التجمع</option><option>مدينة نصر</option><option>مصر الجديدة</option>
+                  <option>عين شمس والمطرية</option><option>المرج</option>
+                </optgroup>
+                <optgroup label="القاهرة">
+                  <option>شبرا</option><option>شبرا الخيمة</option><option>وسط البلد والزمالك</option>
+                  <option>المقطم</option><option>المعادي</option><option>حلوان</option>
+                </optgroup>
+                <optgroup label="الجيزة">
+                  <option>المهندسين والدقي</option><option>الهرم وفيصل</option><option>6 أكتوبر</option><option>الشيخ زايد</option>
+                </optgroup>
+                <optgroup label="حتة تانية">
+                  <option>حتة تانية في القاهرة الكبرى</option><option>محافظة تانية</option><option>بره مصر</option>
+                </optgroup>
+              </select>
+            </div>
+            <p class="price"><output class="figure" name="per" for="team">300</output> <span class="unit">جنيه للفرد</span></p>
+            <p class="total">الإجمالي <output name="total" for="team">1,500</output> جنيه</p>
+            <p class="nudge" data-nudge aria-live="polite"></p>
+            <p class="terms">العربون أونلاين بالكارت أو المحفظة أو InstaPay، والباقي في المكان.</p>
+            <button class="btn btn--primary" type="submit">كمّل الحجز</button>
+            <p class="help" id="booking-help" aria-live="polite"></p>
+            <a class="btn btn--ghost" data-whatsapp-link href="https://wa.me/201118881054" hidden>ابعتوا الاختيار على واتساب</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- The finder: three questions, and the house that fits the team. Its answer picks that house's door in the
+         booking counter (finder.js), so the whole page moves into the house's world. A house that cannot take the team
+         gives way to the closest one that can, and says why. Each house's largest team and youngest player are on its
+         panel in the counter (data-max, data-age). -->
+    <section class="section section--l" id="finder">
+      <div class="container">
+        <div class="head" data-reveal>
+          <h2>أنهي بيت هيرعبكم؟</h2>
+        </div>
+        <div class="finder" data-finder data-reveal style="--i: 1">
+          <form class="finder__ask" novalidate>
+            <fieldset class="step">
+              <legend>بتخافوا من إيه أكتر؟</legend>
+              <div class="seg">
+                <input type="radio" name="fear" id="fear-tomb" value="tomb"><label for="fear-tomb">لعنة الفراعنة</label>
+                <input type="radio" name="fear" id="fear-case" value="case"><label for="fear-case">دكتور مجنون</label>
+                <input type="radio" name="fear" id="fear-morgue" value="morgue"><label for="fear-morgue">سفاح</label>
+              </div>
+            </fieldset>
+            <fieldset class="step">
+              <legend>عددكم كام؟</legend>
+              <div class="seg">
+                <input type="radio" name="size" id="size-8" value="8"><label for="size-8">من 3 لـ 8</label>
+                <input type="radio" name="size" id="size-12" value="12"><label for="size-12">من 9 لـ 12</label>
+              </div>
+            </fieldset>
+            <fieldset class="step">
+              <legend>أصغركم عنده كام سنة؟</legend>
+              <div class="seg">
+                <input type="radio" name="age" id="age-13" value="13"><label for="age-13">أقل من 14</label>
+                <input type="radio" name="age" id="age-14" value="14"><label for="age-14">14 أو 15</label>
+                <input type="radio" name="age" id="age-16" value="16"><label for="age-16">16 وأكبر</label>
+              </div>
+            </fieldset>
+          </form>
+
+          <div class="verdict" data-verdict aria-live="polite">
+            <!-- Before the answers: the three houses, each in its own light and voice, behind a closed door. -->
+            <ul class="verdict__doors" data-wait aria-hidden="true">
+              <li data-world="tomb">مقبرة الملك الحي</li>
+              <li data-world="case">الحالة 404</li>
+              <li data-world="morgue">المشرحة 13</li>
+            </ul>
+            <p class="verdict__wait" data-wait>جاوبوا، والباب هيتفتح على بيت واحد منهم.</p>
+            <p class="verdict__why" data-why></p>
+            <div class="verdict__house" data-house="tomb" data-world="tomb" hidden>
+              <figure class="verdict__picture"><img src="images/EcrvTsML3ew.webp" width="1080" height="1874" alt="" loading="lazy" style="object-position: 50% 52%"></figure>
+              <p class="verdict__name">مقبرة الملك الحي</p>
+              <span class="hiero hiero--tomb" aria-hidden="true"></span>
+              <p>إنكم تخرجوا منها من أول مرة شبه مستحيل.</p>
+              <p class="verdict__facts">10 غرف على 1,000 متر، رعب عالي، ألغاز متوسطة، من 3 لـ 12 لاعب، من 14 سنة</p>
+            </div>
+            <div class="verdict__house" data-house="case" data-world="case" hidden>
+              <figure class="verdict__picture"><img src="images/case-cage.webp" width="1314" height="739" alt="" loading="lazy" style="object-position: 60% 50%"></figure>
+              <p class="verdict__name">الحالة 404</p>
+              <p>دكتور نفسي، وتجارب سرية على البشر.</p>
+              <p class="verdict__facts">8 غرف على 750 متر، رعب عالي، ألغاز صعبة، من 3 لـ 12 لاعب، من 16 سنة</p>
+            </div>
+            <div class="verdict__house" data-house="morgue" data-world="morgue" hidden>
+              <figure class="verdict__picture"><img src="images/morgue-gauze.webp" width="1600" height="906" alt="" loading="lazy" style="object-position: 47% 40%"></figure>
+              <p class="verdict__name">المشرحة 13</p>
+              <p>رسالة استغاثة هتوصلكم، لكن إنتوا مش جايين تنقذوا حد.</p>
+              <p class="verdict__facts">6 غرف على 400 متر، رعب متوسط، ألغاز صعبة، من 3 لـ 8 لاعبين، من 16 سنة</p>
+            </div>
+            <a class="btn btn--primary" href="#booking" data-go hidden>احجزوا البيت ده</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="place">
+      <div class="container place">
+        <div class="head" data-reveal>
+          <h2>جولف سيتي مول، العبور.</h2>
+          <a class="btn btn--ghost" href="https://maps.app.goo.gl/DpSpMvkdiXZK44Wo8">افتحوا الخريطة</a>
+        </div>
+        <dl class="rows" data-reveal style="--i: 1">
+          <div><dt>العنوان</dt><dd>جنب كارفور، والمدخل خاص جنب صيدلية سيف.</dd></div>
+          <div><dt>المواعيد</dt><dd>كل يوم، من 4 العصر لـ 4 الفجر. <span class="open" data-open role="status"></span></dd></div>
+          <div><dt>واتساب وتليفون</dt><dd><a href="tel:+201118881054" dir="ltr">0111 888 1054</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="container band__in" data-reveal>
+        <h2>لو مش قدها… متلعبهاش.</h2>
+        <a class="btn btn--primary" href="#booking">احجز رحلتك</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- On phones this bar follows the visitor wherever no other booking button is in view. motion.js shows it. -->
+  <div class="dock" data-dock hidden>
+    <p class="dock__price"><span class="figure" data-dock-price>300</span> <span>جنيه للفرد</span></p>
+    <a class="btn btn--primary" href="#booking">احجز رحلتك</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__mark" lang="en" dir="ltr">Escape Hub 13</p>
+      <!-- In the tomb's world the name is also written in hieroglyphs, sound by sound in a cartouche: i s k a p, h w b, 10 and 3. -->
+      <span class="hiero hiero--brand footer__glyphs" aria-hidden="true"></span>
+      <ul class="footer__links">
+        <li><a href="https://wa.me/201118881054">واتساب</a></li>
+        <li><a href="https://www.instagram.com/escapehub_13/">إنستجرام</a></li>
+        <li><a href="https://www.tiktok.com/@escapehub13">تيك توك</a></li>
+        <li><a href="https://www.facebook.com/escapehub13">فيسبوك</a></li>
+        <li><a href="https://www.youtube.com/@ESCAPEHUB13">يوتيوب</a></li>
+      </ul>
+      <!-- The owner's line (2026-11-18); the year confirmed by him on 2026-11-19. -->
+      <small class="footer__since" lang="en" dir="ltr">ESCAPE HUB 13 Since 2022</small>
+    </div>
+  </footer>
+
+  <!-- The checkout (checkout.js), opened by "كمّل الحجز" once a house and a time are picked: the visit's rules to agree
+       to (plan rule 23: the rules, safety and the age are required; filming and offers are each optional), the name and
+       the WhatsApp number the confirmation goes to, and the deposit by the method the visitor taps. A wallet or a card
+       goes straight to that method on Paymob's page and is confirmed by the gateway; InstaPay shows the amount and the
+       booking code, opens the InstaPay app, and takes a picture of the transfer, which the venue checks before the
+       confirmation is sent. The logos are stand-ins (the method's name) until the official files are in
+       images/pay/. Nothing here books or sends anything until data-endpoint on the counter is set. -->
+  <dialog class="checkout" data-checkout data-deposit="300" aria-labelledby="checkout-title">
+    <div class="checkout__body">
+      <div class="checkout__head">
+        <h2 class="checkout__title" id="checkout-title">تأكيد الحجز</h2>
+        <button class="btn btn--sm btn--ghost" type="button" data-checkout-close>اقفل</button>
+      </div>
+      <p class="checkout__pick" data-checkout-pick></p>
+      <ol class="checkout__steps">
+        <li data-mark="rules">التعليمات</li>
+        <li data-mark="you">بياناتكم</li>
+        <li data-mark="pay">الدفع</li>
+      </ol>
+
+      <section class="checkout__step" data-step="rules" aria-labelledby="step-rules">
+        <h3 id="step-rules" tabindex="-1">التعليمات قبل ما تحجزوا</h3>
+        <ul class="rules">
+          <li>الرحلة <strong>90 دقيقة</strong> جوه البيت.</li>
+          <li>تعالوا <strong>قبل ميعادكم بـ 15 دقيقة</strong>.</li>
+          <li>البيت ده من <strong><span data-rule-age>16</span> سنة</strong>، ولحد <strong><span data-rule-max>12</span> لاعب</strong>.</li>
+          <li>العربون <strong><span data-rule-deposit>300</span> جنيه</strong> بيتدفع دلوقتي، <strong>ومش بيرجع</strong> لو الحجز اتلغى. والباقي في المكان.</li>
+          <li>قواعد الأمان: <span class="fill" data-fill="safety-rules">نص قواعد الأمان من المكان</span></li>
+        </ul>
+        <label class="agree"><input type="checkbox" name="agree-rules"><span>قريت التعليمات وقواعد الأمان وموافق عليها، وعلى <span class="fill" data-fill="terms">شروط الحجز وسياسة الخصوصية</span>.</span></label>
+        <label class="agree"><input type="checkbox" name="agree-age"><span>كل اللي جايين عندهم <span data-rule-age>16</span> سنة أو أكتر.</span></label>
+        <p class="agree__more">اختياري:</p>
+        <label class="agree"><input type="checkbox" name="agree-filming"><span>موافقين يتصوّر فيديو لردود أفعالنا ويتنشر.</span></label>
+        <label class="agree"><input type="checkbox" name="agree-offers"><span>ابعتولنا العروض على واتساب.</span></label>
+        <button class="btn btn--primary" type="button" data-go="you">موافق، كمّل</button>
+        <p class="help" data-step-help aria-live="polite"></p>
+      </section>
+
+      <section class="checkout__step" data-step="you" aria-labelledby="step-you" hidden>
+        <h3 id="step-you" tabindex="-1">بياناتكم</h3>
+        <div class="field">
+          <label for="co-name">اسم اللي بيحجز</label>
+          <input id="co-name" name="co-name" autocomplete="name" maxlength="80">
+        </div>
+        <div class="field">
+          <label for="co-phone">رقم الواتساب</label>
+          <input id="co-phone" name="co-phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="01012345678">
+          <p class="field__note">تأكيد الحجز هيوصل على الرقم ده.</p>
+        </div>
+        <div class="checkout__row">
+          <button class="btn btn--ghost" type="button" data-go="rules">رجوع</button>
+          <button class="btn btn--primary" type="button" data-go="pay">كمّل للدفع</button>
+        </div>
+        <p class="help" data-step-help aria-live="polite"></p>
+      </section>
+
+      <section class="checkout__step" data-step="pay" aria-labelledby="step-pay" hidden>
+        <h3 id="step-pay" tabindex="-1">العربون: <span data-deposit-amount>300</span> جنيه</h3>
+        <p class="field__note">اختاروا هتدفعوا إزاي:</p>
+        <div class="methods">
+          <input type="radio" name="method" id="method-instapay" value="instapay">
+          <label class="method" for="method-instapay">
+            <span class="method__logos"><span class="logo" lang="en" dir="ltr">InstaPay</span></span>
+            <span class="method__name">InstaPay</span>
+            <span class="method__how">حوّلوا من التطبيق وارفعوا صورة التحويل.</span>
+          </label>
+          <!-- InstaPay's own steps open right under its card. -->
+          <div class="instapay" data-instapay hidden>
+            <ol class="instapay__steps">
+              <li>حوّلوا <strong><span data-deposit-amount>300</span> جنيه</strong> على <span class="fill" data-fill="instapay-address" dir="ltr">عنوان InstaPay بتاع المكان</span>.</li>
+              <li>اكتبوا كود الحجز في ملاحظة التحويل: <span class="fill" data-fill="booking-code" dir="ltr">EH-كود الحجز</span></li>
+              <li>ارجعوا هنا وارفعوا صورة التحويل.</li>
+            </ol>
+            <a class="btn btn--ghost" data-instapay-open href="https://www.instapay.eg/" target="_blank" rel="noopener noreferrer">افتح InstaPay</a>
+            <div class="upload">
+              <input id="co-proof" name="co-proof" type="file" accept="image/*">
+              <label class="btn btn--ghost" for="co-proof" data-proof-label>اختاروا صورة التحويل</label>
+              <div class="proof" data-proof-preview hidden></div>
+            </div>
+            <button class="btn btn--primary" type="button" data-send-proof>ابعتوا صورة التحويل</button>
+          </div>
+          <input type="radio" name="method" id="method-wallet" value="wallet">
+          <label class="method" for="method-wallet">
+            <span class="method__logos" lang="en" dir="ltr"><span class="logo">Vodafone Cash</span><span class="logo">Etisalat</span><span class="logo">Orange</span><span class="logo">WE Pay</span></span>
+            <span class="method__name">محفظة موبايل</span>
+            <span class="method__how">بتروحوا على طول لصفحة الدفع، والحجز بيتأكد لوحده.</span>
+          </label>
+          <input type="radio" name="method" id="method-card" value="card">
+          <label class="method" for="method-card">
+            <span class="method__logos" lang="en" dir="ltr"><span class="logo">Visa</span><span class="logo">Mastercard</span></span>
+            <span class="method__name">كارت بنك</span>
+            <span class="method__how">بتروحوا على طول لصفحة الدفع، والحجز بيتأكد لوحده.</span>
+          </label>
+        </div>
+        <button class="btn btn--ghost" type="button" data-go="you">رجوع</button>
+        <p class="help" data-step-help aria-live="polite"></p>
+      </section>
+
+      <section class="checkout__step" data-step="done" aria-labelledby="step-done" hidden>
+        <h3 id="step-done" tabindex="-1" data-done-title>كده الخطوات خلصت</h3>
+        <p data-done-text></p>
+        <p class="checkout__preview">ده عرض للخطوات بس: الحجز الأونلاين لسه مش متوصل، ومفيش حاجة اتبعتت ولا اتحجزت.</p>
+        <a class="btn btn--primary" data-done-whatsapp href="https://wa.me/201118881054">احجزوا على واتساب</a>
+      </section>
+    </div>
+  </dialog>
+
+  <!-- The trailer's own screen, opened from the card in the booking counter (teaser.js). -->
+  <dialog class="trailer" data-trailer>
+    <div class="trailer__shade"></div>
+    <button class="btn btn--sm btn--over trailer__close" type="button">اقفلوا التريلر</button>
+    <video controls playsinline preload="none"></video>
+  </dialog>
+
+  <script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
+  <script src="booking.js"></script>
+  <script src="finder.js"></script>
+  <script src="arrival.js"></script>
+  <script src="venue.js"></script>
+  <script src="torch.js"></script>
+  <script src="teaser.js"></script>
+  <script src="checkout.js"></script>
+  <script src="motion.js"></script>
+  <script src="sound.js"></script>
+</body>
+</html>

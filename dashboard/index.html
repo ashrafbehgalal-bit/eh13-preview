@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lock="e32f0d57e31243b155be13863097760c7414660ada002db255b86eb3b3e24fac">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Escape Hub 13 · الأرقام</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <!-- A curtain, not a lock: the password is checked in the browser, which is enough for demo numbers. The real
+       numbers go in the staff panel, behind its sign-in (plan, phase 4). -->
+  <form class="gate" data-gate>
+    <p class="gate__brand">Escape Hub 13</p>
+    <h1 class="gate__title">لوحة الأرقام</h1>
+    <label class="gate__label" for="pass">الباسورد</label>
+    <input class="gate__input" id="pass" name="pass" type="password" autocomplete="current-password" required>
+    <button class="gate__go" type="submit">ادخل</button>
+    <p class="gate__help" data-gate-help aria-live="polite"></p>
+  </form>
+
+  <div class="app" data-app hidden>
+    <header class="top">
+      <div class="top__title">
+        <p class="top__brand">Escape Hub 13</p>
+        <h1>لوحة الأرقام</h1>
+      </div>
+      <div class="demo-row"><p class="demo" role="note" data-demo-note></p><button class="demo-switch" type="button" data-demo-switch></button></div>
+      <div class="range" role="radiogroup" aria-label="الفترة">
+        <button type="button" role="radio" data-range="7">آخر 7 أيام</button>
+        <button type="button" role="radio" data-range="30">آخر 30 يوم</button>
+        <button type="button" role="radio" data-range="90">آخر 90 يوم</button>
+      </div>
+      <p class="top__span" data-span></p>
+    </header>
+
+    <main class="grid">
+      <section class="kpis" data-kpis aria-label="الأرقام الأساسية"></section>
+
+      <section class="card card--wide card--read">
+        <h2>قراءة الأرقام</h2>
+        <ul class="reads" data-reads></ul>
+      </section>
+
+      <section class="card card--half">
+        <div class="card__head"><h2>الزوار كل يوم</h2><p class="note">زائر واحد = جهاز واحد في اليوم</p></div>
+        <div class="chart" data-chart="visitors"></div>
+        <details class="table-view"><summary>الأرقام كجدول</summary><div data-table="visitors"></div></details>
+      </section>
+
+      <section class="card card--half">
+        <div class="card__head"><h2>الحجوزات حسب البيت</h2><p class="note" data-bookings-note></p></div>
+        <div class="legend" data-legend="bookings"></div>
+        <div class="chart" data-chart="bookings"></div>
+        <details class="table-view"><summary>الأرقام كجدول</summary><div data-table="bookings"></div></details>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__head"><h2>وصلوا لحد فين؟</h2><p class="note">كل زائر، لحد آخر خطوة وصلها في الموقع</p></div>
+        <ol class="funnel" data-funnel></ol>
+      </section>
+
+      <section class="card card--half">
+        <div class="card__head"><h2>جم منين؟</h2><p class="note">المصدر، وكام واحد منهم حجز</p></div>
+        <div class="rows" data-rows="sources"></div>
+      </section>
+
+      <section class="card card--half">
+        <div class="card__head"><h2>منين في مصر؟</h2><p class="note">المحافظة تقريبية: من عنوان الإنترنت</p></div>
+        <div class="rows" data-rows="regions"></div>
+        <h3 class="sub">من بره مصر</h3>
+        <div class="rows rows--small" data-rows="countries"></div>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__head"><h2>منين في القاهرة الكبرى؟</h2><p class="note">المنطقة من عنوان الإنترنت: إنترنت البيت غالباً بيقول المنطقة، وباقة الموبايل أغلبها بتقول «القاهرة» بس، فدول تحت «المنطقة مش واضحة»</p></div>
+        <div class="cairo">
+          <figure class="cairo__map">
+            <div class="chart chart--map" data-chart="cairo"></div>
+            <figcaption class="map-key" data-map-key></figcaption>
+          </figure>
+          <div>
+            <div class="rows rows--small" data-rows="areas"></div>
+            <details class="table-view" data-areas-more><summary>باقي المناطق</summary><div class="rows rows--small" data-rows="areas-more"></div></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__head"><h2>البيوت</h2><p class="note">اللي اختاروا كل بيت، واللي حجزوه منهم</p></div>
+        <div class="houses" data-houses></div>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__head"><h2>المواعيد الأكتر طلباً</h2><p class="note">نسبة الامتلاء: الرحلات اللي اتلعبت ÷ اللي كانت ممكنة في الفترة. الميعاد بتوقيت المقبرة، والبيتين التانيين قبله أو بعده بنص ساعة</p></div>
+        <div class="heat" data-heat></div>
+        <div class="heat-key" data-heat-key></div>
+      </section>
+
+      <section class="card card--third">
+        <div class="card__head"><h2>الأجهزة</h2></div>
+        <div class="rows" data-rows="devices"></div>
+      </section>
+
+      <section class="card card--third">
+        <div class="card__head"><h2>حجم الفريق</h2><p class="note">كام حجز بكل عدد</p></div>
+        <div class="chart chart--short" data-chart="team"></div>
+      </section>
+
+      <section class="card card--third">
+        <div class="card__head"><h2>بيحجزوا قبلها بقد إيه؟</h2></div>
+        <div class="rows" data-rows="lead"></div>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__head card__head--actions">
+          <div><h2>آخر الحجوزات</h2><p class="note">زي شيت الحجوزات بالظبط. الأسامي والأرقام هنا مستخبية، وكاملة في الشيت</p></div>
+          <div class="actions">
+            <button type="button" class="btn" data-download>نزّل الحجوزات Excel</button>
+            <button type="button" class="btn btn--quiet" disabled title="يتوصل لما الموقع الحقيقي ينزل">افتح شيت Google</button>
+          </div>
+        </div>
+        <div class="table-wrap"><table class="bookings" data-bookings></table></div>
+      </section>
+    </main>
+    <footer class="foot">الزيارات من Google Analytics 4، والحجوزات من الموقع نفسه. الأرقام دي تجريبية.</footer>
+  </div>
+
+  <div class="tip" data-tip role="status" hidden></div>
+  <script src="demo-data.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
